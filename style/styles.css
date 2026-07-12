@@ -2309,3 +2309,60 @@ footer a[href^="mailto"] {
 [hidden] {
     display: none !important;
 }
+
+/* =========================================
+   15. Accessibility Remediation
+   (WCAG 2.2 AA audit fixes — July 2026)
+   ========================================= */
+
+/* 2.4.11 Focus Not Obscured: keep anchor targets and reverse-tab focus
+   clear of the sticky nav */
+html {
+    scroll-padding-top: 4rem;
+}
+
+/* 1.4.11 Non-text Contrast: Titan orange is 2.63:1 on white — use brand
+   blue for the focus ring in light theme (orange passes in dark) */
+[data-theme="light"] :focus-visible {
+    outline-color: var(--secondary);
+}
+
+/* 1.4.3: white-on-orange nav hover was 2.63:1 */
+.nav-list a:hover {
+    color: #1A1A1A;
+}
+
+/* 1.4.3: dark theme repurposes --secondary as a surface gray (#2D3748),
+   which is 1.36:1 when used as text on cards */
+[data-theme="dark"] .c-code {
+    color: #8FB8F2;
+}
+
+/* 1.4.3: dark hover/focus pill text was 1.03:1; active fill was 3.73:1 */
+[data-theme="dark"] .career-pill:hover,
+[data-theme="dark"] .career-pill:focus-visible {
+    color: var(--text-primary);
+    border-color: var(--primary);
+}
+
+[data-theme="dark"] .career-pill.active {
+    background: #1E5AAB;
+    border-color: #1E5AAB;
+}
+
+/* 1.4.3: white text on the dark theme's #3B85E0 fills was 3.73:1 */
+[data-theme="dark"] .data-table th,
+[data-theme="dark"] .rm-table th,
+[data-theme="dark"] .step-dot {
+    background: #1E5AAB;
+}
+
+/* 1.4.3: Titan orange stat figure was 2.63:1 on white */
+[data-theme="light"] .stat-num.stat-accent {
+    color: #C25400;
+}
+
+/* 1.4.10 Reflow: tracker rows overflowed the 320px viewport by 3px */
+.course-row {
+    flex-wrap: wrap;
+}

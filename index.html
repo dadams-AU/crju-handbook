@@ -63,7 +63,7 @@
                     <p class="text-sm text-gray-600 mt-2">A PDF version of this handbook is available for download. <a href="crju_advising_handbook_fa26.pdf" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline">Download the PDF (opens in new tab)</a>.</p>
                 </div>
                 <div class="bg-orange-50 border-l-4 border-orange-500 p-4">
-                    <p><strong>New major requirements take effect Fall 2026.</strong> If you enrolled before Fall 2026, check which catalog year applies to you. See the <a href="https://paj.fullerton.edu/criminaljustice/major/" target="_blank" rel="noopener noreferrer">Major Requirements website</a> for road maps by catalog year.</p>
+                    <p><strong>New major requirements take effect Fall 2026.</strong> If you enrolled before Fall 2026, check which catalog year applies to you. See the <a href="https://paj.fullerton.edu/criminaljustice/major/" target="_blank" rel="noopener noreferrer">Major Requirements website<span class="sr-only"> (opens in new tab)</span></a> for road maps by catalog year.</p>
                 </div>
             </div>
 
@@ -109,7 +109,8 @@
                 <button type="button" class="career-pill" data-career="federal"><i class="fas fa-flag-usa" aria-hidden="true"></i> Federal Agencies</button>
             </div>
             <div id="career-prompt" class="alert-box info"><i class="fas fa-hand-pointer" aria-hidden="true"></i><span>Pick a career area above to see a personalized guide — recommended courses, minors, internship tips, and who to contact.</span></div>
-            <div id="career-detail" aria-live="polite" hidden></div>
+            <div id="career-status" role="status" class="sr-only"></div>
+            <div id="career-detail" hidden></div>
         </section>
 
         <!-- Course Tracker Section -->
@@ -137,7 +138,7 @@
             </div>
             <div class="card">
                 <h3>Related Fields — 12 units (catalog year 2026)</h3>
-                <p class="text-sm text-gray-600">Any 12 units from the <a href="https://docs.google.com/document/d/1ut0vbgFtBz0hmnh83wVZoRUkIlELQH993yXrqItHuY8/edit?usp=sharing" target="_blank" rel="noopener noreferrer">approved Related Fields course list</a>. Track these on your Titan Degree Audit.</p>
+                <p class="text-sm text-gray-600">Any 12 units from the <a href="https://docs.google.com/document/d/1ut0vbgFtBz0hmnh83wVZoRUkIlELQH993yXrqItHuY8/edit?usp=sharing" target="_blank" rel="noopener noreferrer">approved Related Fields course list<span class="sr-only"> (opens in new tab)</span></a>. Track these on your Titan Degree Audit.</p>
             </div>
             <div class="card course-list-card">
                 <h3>Upper Division Writing — 3 units (choose 1)</h3>
@@ -150,31 +151,32 @@
             <h2>Plan My Path</h2>
             <p class="section-intro text-sm">Answer three questions and get a personalized road map.</p>
             <div class="card">
-                <div class="plan-step" id="ps-0">
-                    <div class="step-tag"><span class="step-dot">1</span> How did you arrive at CSUF?</div>
-                    <button type="button" class="opt-btn" data-key="entry" data-val="freshman"><span class="opt-check" aria-hidden="true"></span><span><strong>Freshman</strong> — I started as a first-year student at CSUF</span></button>
-                    <button type="button" class="opt-btn" data-key="entry" data-val="transfer"><span class="opt-check" aria-hidden="true"></span><span><strong>Transfer</strong> — I transferred from a community college</span></button>
+                <div class="plan-step" id="ps-0" role="group" aria-labelledby="st-0">
+                    <div class="step-tag" id="st-0"><span class="step-dot">1</span> How did you arrive at CSUF?</div>
+                    <button type="button" class="opt-btn" data-key="entry" data-val="freshman" aria-pressed="false"><span class="opt-check" aria-hidden="true"></span><span><strong>Freshman</strong> — I started as a first-year student at CSUF</span></button>
+                    <button type="button" class="opt-btn" data-key="entry" data-val="transfer" aria-pressed="false"><span class="opt-check" aria-hidden="true"></span><span><strong>Transfer</strong> — I transferred from a community college</span></button>
                 </div>
-                <div class="plan-step plan-step-hidden" id="ps-1">
-                    <div class="step-tag"><span class="step-dot">2</span> How many years do you have?</div>
+                <div class="plan-step plan-step-hidden" id="ps-1" role="group" aria-labelledby="st-1">
+                    <div class="step-tag" id="st-1"><span class="step-dot">2</span> How many years do you have?</div>
                     <div id="ps-1-opts"></div>
                 </div>
-                <div class="plan-step plan-step-hidden" id="ps-2">
-                    <div class="step-tag"><span class="step-dot">3</span> Weekly hours on work, family &amp; commuting?</div>
-                    <button type="button" class="opt-btn" data-key="hours" data-val="0-9"><span class="opt-check" aria-hidden="true"></span><span>0–9 hours — Mostly available to study</span></button>
-                    <button type="button" class="opt-btn" data-key="hours" data-val="10-19"><span class="opt-check" aria-hidden="true"></span><span>10–19 hours — Some outside commitments</span></button>
-                    <button type="button" class="opt-btn" data-key="hours" data-val="20-29"><span class="opt-check" aria-hidden="true"></span><span>20–29 hours — Significant commitments</span></button>
-                    <button type="button" class="opt-btn" data-key="hours" data-val="30-39"><span class="opt-check" aria-hidden="true"></span><span>30–39 hours — Very busy schedule</span></button>
+                <div class="plan-step plan-step-hidden" id="ps-2" role="group" aria-labelledby="st-2">
+                    <div class="step-tag" id="st-2"><span class="step-dot">3</span> Weekly hours on work, family &amp; commuting?</div>
+                    <button type="button" class="opt-btn" data-key="hours" data-val="0-9" aria-pressed="false"><span class="opt-check" aria-hidden="true"></span><span>0–9 hours — Mostly available to study</span></button>
+                    <button type="button" class="opt-btn" data-key="hours" data-val="10-19" aria-pressed="false"><span class="opt-check" aria-hidden="true"></span><span>10–19 hours — Some outside commitments</span></button>
+                    <button type="button" class="opt-btn" data-key="hours" data-val="20-29" aria-pressed="false"><span class="opt-check" aria-hidden="true"></span><span>20–29 hours — Significant commitments</span></button>
+                    <button type="button" class="opt-btn" data-key="hours" data-val="30-39" aria-pressed="false"><span class="opt-check" aria-hidden="true"></span><span>30–39 hours — Very busy schedule</span></button>
                 </div>
             </div>
-            <div id="plan-result" aria-live="polite"></div>
+            <div id="plan-status" role="status"></div>
+            <div id="plan-result"></div>
         </section>
 
         <!-- The Major Section -->
         <section id="major" class="section">
             <h2>The Criminal Justice Major</h2>
             <p class="section-intro text-sm">54 units total (Catalog Year 2026). Minimum C- in every course. Minimum 2.0 major GPA.</p>
-            <div class="alert-box warn"><i class="fas fa-triangle-exclamation" aria-hidden="true"></i><span><strong>New requirements take effect Fall 2026.</strong> If you enrolled before Fall 2026, check which catalog year applies to you. See the <a href="https://paj.fullerton.edu/criminaljustice/major/" target="_blank" rel="noopener noreferrer">Major Requirements website</a> for road maps by catalog year.</span></div>
+            <div class="alert-box warn"><i class="fas fa-triangle-exclamation" aria-hidden="true"></i><span><strong>New requirements take effect Fall 2026.</strong> If you enrolled before Fall 2026, check which catalog year applies to you. See the <a href="https://paj.fullerton.edu/criminaljustice/major/" target="_blank" rel="noopener noreferrer">Major Requirements website<span class="sr-only"> (opens in new tab)</span></a> for road maps by catalog year.</span></div>
             <div class="alert-box info"><i class="fas fa-circle-info" aria-hidden="true"></i><span>Catalog years Fall 2018 and later: CRJU courses can double-count toward GE requirements (for example, CRJU 385 satisfies GE Area Z). Track your progress on your <strong>Titan Degree Audit</strong> (Portal login → Student Homepage → Titan Degree Audit).</span></div>
 
             <div class="card">
@@ -210,7 +212,7 @@
             </div>
             <div class="card">
                 <h3><i class="fas fa-thumbtack" aria-hidden="true"></i> Related Fields — 12 units (Catalog Year 2026)</h3>
-                <p class="text-sm text-gray-600">Choose from the <a href="https://docs.google.com/document/d/1ut0vbgFtBz0hmnh83wVZoRUkIlELQH993yXrqItHuY8/edit?usp=sharing" target="_blank" rel="noopener noreferrer">approved Related Fields list</a>. Many minor courses qualify.</p>
+                <p class="text-sm text-gray-600">Choose from the <a href="https://docs.google.com/document/d/1ut0vbgFtBz0hmnh83wVZoRUkIlELQH993yXrqItHuY8/edit?usp=sharing" target="_blank" rel="noopener noreferrer">approved Related Fields list<span class="sr-only"> (opens in new tab)</span></a>. Many minor courses qualify.</p>
             </div>
             <div class="card">
                 <h3><i class="fas fa-thumbtack" aria-hidden="true"></i> Upper Division Writing — 3 units (choose 1)</h3>
@@ -490,7 +492,7 @@
                     <summary>Academic notice — what happens</summary>
                     <div class="elective-content">
                         <p>When your CSUF or cumulative GPA falls below 2.0, you are placed on academic notice. The College of HSS places a hold on your account. You must attend an Academic Notice Information Session and meet with the HSS Student Success Team to release it.</p>
-                        <p><a href="https://hss.fullerton.edu/student_success_team/probation.aspx" target="_blank" rel="noopener noreferrer">HSS Probation info</a> | <a href="https://www.fullerton.edu/aac/resources/gpa_calculator.php" target="_blank" rel="noopener noreferrer">GPA Calculator</a></p>
+                        <p><a href="https://hss.fullerton.edu/student_success_team/probation.aspx" target="_blank" rel="noopener noreferrer">HSS Probation info<span class="sr-only"> (opens in new tab)</span></a> | <a href="https://www.fullerton.edu/aac/resources/gpa_calculator.php" target="_blank" rel="noopener noreferrer">GPA Calculator<span class="sr-only"> (opens in new tab)</span></a></p>
                     </div>
                 </details>
                 <details class="elective-group">
@@ -553,23 +555,23 @@
                 <h3><i class="fas fa-landmark" aria-hidden="true"></i> Special Programs</h3>
                 <p><strong>Moot Court:</strong> CSUF's team is consistently nationally ranked. Sharpen legal writing, oral advocacy, and critical thinking. Especially valuable for pre-law. Contact Dr. Pam Fiber-Ostrow (<a href="mailto:pfiber@fullerton.edu">pfiber@fullerton.edu</a>; GH-532).</p>
                 <p><strong>Intelligence Community Scholars Program:</strong> Prepares students for national security and intelligence careers through advanced study, mentoring, and networking. Minimum 3.2 GPA, rolling applications. Contact Dr. Valerie O'Regan (<a href="mailto:voregan@fullerton.edu">voregan@fullerton.edu</a>).</p>
-                <p><strong>Cal State D.C. Scholars:</strong> Earn credit while interning in Washington, D.C. Open to juniors, seniors, and grad students of all majors. Contact Amie Zeoli (<a href="mailto:amzeoli@fullerton.edu">amzeoli@fullerton.edu</a>) or visit <a href="http://hss.fullerton.edu/cal_state_dc/" target="_blank" rel="noopener noreferrer">hss.fullerton.edu/cal_state_dc/</a>.</p>
-                <p><strong>Study Abroad:</strong> CRJU students are highly encouraged to study abroad. Visit <a href="http://hss.fullerton.edu/Study_Abroad/study_abroad.aspx" target="_blank" rel="noopener noreferrer">HSS Study Abroad</a> or <a href="http://international.fullerton.edu/study-abroad" target="_blank" rel="noopener noreferrer">CSUF International</a>.</p>
+                <p><strong>Cal State D.C. Scholars:</strong> Earn credit while interning in Washington, D.C. Open to juniors, seniors, and grad students of all majors. Contact Amie Zeoli (<a href="mailto:amzeoli@fullerton.edu">amzeoli@fullerton.edu</a>) or visit <a href="http://hss.fullerton.edu/cal_state_dc/" target="_blank" rel="noopener noreferrer">hss.fullerton.edu/cal_state_dc/<span class="sr-only"> (opens in new tab)</span></a>.</p>
+                <p><strong>Study Abroad:</strong> CRJU students are highly encouraged to study abroad. Visit <a href="http://hss.fullerton.edu/Study_Abroad/study_abroad.aspx" target="_blank" rel="noopener noreferrer">HSS Study Abroad<span class="sr-only"> (opens in new tab)</span></a> or <a href="http://international.fullerton.edu/study-abroad" target="_blank" rel="noopener noreferrer">CSUF International<span class="sr-only"> (opens in new tab)</span></a>.</p>
             </div>
 
             <div class="card">
                 <h3><i class="fas fa-medal" aria-hidden="true"></i> Student Organizations</h3>
-                <p><strong>Alpha Phi Sigma (APS) — National CJ Honor Society:</strong> Requires 12+ CRJU units, 3.0 overall GPA, 3.2 major GPA. Holds speaker events every semester. Contact Dr. Veronica Herrera (<a href="mailto:veherrera@fullerton.edu">veherrera@fullerton.edu</a>; GH-527) or visit <a href="https://fullerton.campuslabs.com/engage/organization/alphaphisigma" target="_blank" rel="noopener noreferrer">APS on TitanLink</a>.</p>
-                <p><strong>CJSA — Criminal Justice Student Association:</strong> Open to all students interested in CJ. Networking, facility tours, forums, volunteer work. Contact Dr. Christie Gardiner (<a href="mailto:cgardiner@fullerton.edu">cgardiner@fullerton.edu</a>; GH-530) or visit <a href="https://fullerton.campuslabs.com/engage/organization/cjsa" target="_blank" rel="noopener noreferrer">CJSA on TitanLink</a>.</p>
-                <p><strong>CSUF Pre-Law Society:</strong> Law school prep, peer networks, faculty connections. Contact Dr. Rob Castro (<a href="mailto:rcastro@fullerton.edu">rcastro@fullerton.edu</a>; UH-544) or visit <a href="https://fullerton.campuslabs.com/engage/organization/PreLawSociety" target="_blank" rel="noopener noreferrer">Pre-Law Society on TitanLink</a>.</p>
+                <p><strong>Alpha Phi Sigma (APS) — National CJ Honor Society:</strong> Requires 12+ CRJU units, 3.0 overall GPA, 3.2 major GPA. Holds speaker events every semester. Contact Dr. Veronica Herrera (<a href="mailto:veherrera@fullerton.edu">veherrera@fullerton.edu</a>; GH-527) or visit <a href="https://fullerton.campuslabs.com/engage/organization/alphaphisigma" target="_blank" rel="noopener noreferrer">APS on TitanLink<span class="sr-only"> (opens in new tab)</span></a>.</p>
+                <p><strong>CJSA — Criminal Justice Student Association:</strong> Open to all students interested in CJ. Networking, facility tours, forums, volunteer work. Contact Dr. Christie Gardiner (<a href="mailto:cgardiner@fullerton.edu">cgardiner@fullerton.edu</a>; GH-530) or visit <a href="https://fullerton.campuslabs.com/engage/organization/cjsa" target="_blank" rel="noopener noreferrer">CJSA on TitanLink<span class="sr-only"> (opens in new tab)</span></a>.</p>
+                <p><strong>CSUF Pre-Law Society:</strong> Law school prep, peer networks, faculty connections. Contact Dr. Rob Castro (<a href="mailto:rcastro@fullerton.edu">rcastro@fullerton.edu</a>; UH-544) or visit <a href="https://fullerton.campuslabs.com/engage/organization/PreLawSociety" target="_blank" rel="noopener noreferrer">Pre-Law Society on TitanLink<span class="sr-only"> (opens in new tab)</span></a>.</p>
             </div>
 
             <div class="card">
                 <h3><i class="fas fa-hand-holding-dollar" aria-hidden="true"></i> Scholarships, Awards &amp; Research Funding</h3>
                 <p>Department awards (applications due in spring): Outstanding Student Leadership &amp; Activities Award · Academic Excellence Award · Hobbs-Dery Award (law-related excellence) · Rose Sullivan &amp; Rebecca Morales Memorial Scholarship ($500 each, for adult re-entry students) · Alumnus of the Year Award.</p>
-                <p><strong>CSUF Scholarships:</strong> Nearly $2 million annually. Most HSS scholarships are due in early February. <a href="http://www.fullerton.edu/financialaid/general/scholarships.php" target="_blank" rel="noopener noreferrer">Full details here</a>.</p>
+                <p><strong>CSUF Scholarships:</strong> Nearly $2 million annually. Most HSS scholarships are due in early February. <a href="http://www.fullerton.edu/financialaid/general/scholarships.php" target="_blank" rel="noopener noreferrer">Full details here<span class="sr-only"> (opens in new tab)</span></a>.</p>
                 <p><strong>Intramural research funding:</strong> ASI Research Grants (student-operated) and Faculty Development Center Research and Creativity Awards fund student and faculty-student collaborative research through competitive proposals — ask your research mentor.</p>
-                <p><strong>McNair Scholars Program:</strong> For first-generation and underrepresented students interested in doctoral study. Must have 59+ units and 3.0 GPA. <a href="http://www.fullerton.edu/mcnair/" target="_blank" rel="noopener noreferrer">fullerton.edu/mcnair</a>.</p>
+                <p><strong>McNair Scholars Program:</strong> For first-generation and underrepresented students interested in doctoral study. Must have 59+ units and 3.0 GPA. <a href="http://www.fullerton.edu/mcnair/" target="_blank" rel="noopener noreferrer">fullerton.edu/mcnair<span class="sr-only"> (opens in new tab)</span></a>.</p>
             </div>
         </section>
 
@@ -737,7 +739,7 @@
                         <p><i class="fas fa-location-dot" aria-hidden="true"></i> GH 528 · <i class="fas fa-phone" aria-hidden="true"></i> (657) 278-3728 · <a href="mailto:sstone@fullerton.edu">sstone@fullerton.edu</a></p>
                     </div>
                 </details>
-                <p class="text-sm text-gray-600 mt-1"><a href="http://hss.fullerton.edu/paj/Faculty/part_time_faculty.aspx" target="_blank" rel="noopener noreferrer">Part-time faculty contact information</a></p>
+                <p class="text-sm text-gray-600 mt-1"><a href="http://hss.fullerton.edu/paj/Faculty/part_time_faculty.aspx" target="_blank" rel="noopener noreferrer">Part-time faculty contact information<span class="sr-only"> (opens in new tab)</span></a></p>
             </div>
         </section>
 
@@ -748,13 +750,13 @@
 
             <div class="card">
                 <h3><i class="fas fa-building" aria-hidden="true"></i> Department &amp; Advising</h3>
-                <div class="contact-row"><div><div class="contact-label">PAJ Division Office</div><div class="contact-detail">(657) 278-3521 — GH 511 | <a href="mailto:pajdiv@fullerton.edu">pajdiv@fullerton.edu</a> | <a href="https://hss.fullerton.edu/paj/" target="_blank" rel="noopener noreferrer">hss.fullerton.edu/paj/</a></div></div></div>
+                <div class="contact-row"><div><div class="contact-label">PAJ Division Office</div><div class="contact-detail">(657) 278-3521 — GH 511 | <a href="mailto:pajdiv@fullerton.edu">pajdiv@fullerton.edu</a> | <a href="https://hss.fullerton.edu/paj/" target="_blank" rel="noopener noreferrer">hss.fullerton.edu/paj/<span class="sr-only"> (opens in new tab)</span></a></div></div></div>
                 <div class="contact-row"><div><div class="contact-label">Chair — Dr. Sarah Hill</div><div class="contact-detail">(657) 278-8460 — GH 510</div></div></div>
                 <div class="contact-row"><div><div class="contact-label">Associate Chair — Dr. Alissa R. Ackerman</div><div class="contact-detail">(657) 278-2272 — GH 536 | <a href="mailto:aackerman@fullerton.edu">aackerman@fullerton.edu</a></div></div></div>
                 <div class="contact-row"><div><div class="contact-label">Admin Support Coordinator — Destenee Thomas</div><div class="contact-detail">(657) 278-3523 — GH-512</div></div></div>
                 <div class="contact-row"><div><div class="contact-label">Admin Support Assistant — Amber Cabrera</div><div class="contact-detail">(657) 278-3419 — GH-511</div></div></div>
                 <div class="contact-row"><div><div class="contact-label">Admin Support Assistant — Lynda Banuelos</div><div class="contact-detail">(657) 278-4830 — GH-511</div></div></div>
-                <div class="contact-row"><div><div class="contact-label">CRJU Advising</div><div class="contact-detail">(657) 278-3521 — GH-211A | <a href="https://paj.fullerton.edu/criminaljustice/advising/cj-advising.html" target="_blank" rel="noopener noreferrer">Walk-in hours</a></div></div></div>
+                <div class="contact-row"><div><div class="contact-label">CRJU Advising</div><div class="contact-detail">(657) 278-3521 — GH-211A | <a href="https://paj.fullerton.edu/criminaljustice/advising/cj-advising.html" target="_blank" rel="noopener noreferrer">Walk-in hours<span class="sr-only"> (opens in new tab)</span></a></div></div></div>
                 <div class="contact-row"><div><div class="contact-label">Internship Coordinator — Dr. Christie Gardiner</div><div class="contact-detail">(657) 278-3608 — GH 530 | <a href="mailto:cgardiner@fullerton.edu">cgardiner@fullerton.edu</a></div></div></div>
                 <div class="contact-row"><div><div class="contact-label">Pre-Law Advising — Dr. Rob Castro</div><div class="contact-detail">(657) 278-2571 — GH 544 | <a href="mailto:rcastro@fullerton.edu">rcastro@fullerton.edu</a></div></div></div>
                 <div class="contact-row"><div><div class="contact-label">College Advisors — Nallely Pratz &amp; Britt March</div><div class="contact-detail">(657) 278-5929 — GH-211A</div></div></div>
@@ -768,20 +770,20 @@
                 <div class="contact-row"><div><div class="contact-label">Academic Advisement Center</div><div class="contact-detail">(657) 278-5308 — LH 208 | GE advising, undeclared majors</div></div></div>
                 <div class="contact-row"><div><div class="contact-label">Academic Appeals</div><div class="contact-detail">(657) 278-3606 — GH 123B | Grade dispute information and resolution</div></div></div>
                 <div class="contact-row"><div><div class="contact-label">Registration &amp; Records</div><div class="contact-detail">(657) 278-3836 — LH 805 | Grad checks, change of major, withdrawal forms</div></div></div>
-                <div class="contact-row"><div><div class="contact-label">Career Center</div><div class="contact-detail">(657) 278-3121 — LH 208 | <a href="http://www.fullerton.edu/career" target="_blank" rel="noopener noreferrer">fullerton.edu/career</a></div></div></div>
-                <div class="contact-row"><div><div class="contact-label">Center for Internships &amp; Community Engagement</div><div class="contact-detail">(657) 278-3746 — LH-206 | <a href="http://www.fullerton.edu/cice/" target="_blank" rel="noopener noreferrer">fullerton.edu/cice/</a></div></div></div>
+                <div class="contact-row"><div><div class="contact-label">Career Center</div><div class="contact-detail">(657) 278-3121 — LH 208 | <a href="http://www.fullerton.edu/career" target="_blank" rel="noopener noreferrer">fullerton.edu/career<span class="sr-only"> (opens in new tab)</span></a></div></div></div>
+                <div class="contact-row"><div><div class="contact-label">Center for Internships &amp; Community Engagement</div><div class="contact-detail">(657) 278-3746 — LH-206 | <a href="http://www.fullerton.edu/cice/" target="_blank" rel="noopener noreferrer">fullerton.edu/cice/<span class="sr-only"> (opens in new tab)</span></a></div></div></div>
                 <div class="contact-row"><div><div class="contact-label">College Legal Clinic</div><div class="contact-detail">(657) 278-3121 — LH 208 | Referrals to pre-screened attorneys</div></div></div>
                 <div class="contact-row"><div><div class="contact-label">Writing Center</div><div class="contact-detail">(657) 278-3650 — PLN 100 | Free to all students</div></div></div>
-                <div class="contact-row"><div><div class="contact-label">University Learning Center</div><div class="contact-detail">(657) 278-2738 — PLN 1st Floor | <a href="http://www.fullerton.edu/ulc/" target="_blank" rel="noopener noreferrer">fullerton.edu/ulc/</a></div></div></div>
+                <div class="contact-row"><div><div class="contact-label">University Learning Center</div><div class="contact-detail">(657) 278-2738 — PLN 1st Floor | <a href="http://www.fullerton.edu/ulc/" target="_blank" rel="noopener noreferrer">fullerton.edu/ulc/<span class="sr-only"> (opens in new tab)</span></a></div></div></div>
                 <div class="contact-row"><div><div class="contact-label">Math Tutoring Center</div><div class="contact-detail">(657) 278-3631 — MH-553</div></div></div>
                 <div class="contact-row"><div><div class="contact-label">Tutoring Opportunity Center (OCSAMS)</div><div class="contact-detail">(657) 278-3583 — MH-143 | Biology, Chemistry, Physics tutoring</div></div></div>
-                <div class="contact-row"><div><div class="contact-label">Supplemental Instruction</div><div class="contact-detail"><a href="http://www.fullerton.edu/si/" target="_blank" rel="noopener noreferrer">fullerton.edu/si/</a></div></div></div>
+                <div class="contact-row"><div><div class="contact-label">Supplemental Instruction</div><div class="contact-detail"><a href="http://www.fullerton.edu/si/" target="_blank" rel="noopener noreferrer">fullerton.edu/si/<span class="sr-only"> (opens in new tab)</span></a></div></div></div>
                 <div class="contact-row"><div><div class="contact-label">Testing Center</div><div class="contact-detail">(657) 278-8203 — PLN 1st Floor | GRE, TOEFL, CBEST, and more</div></div></div>
                 <div class="contact-row"><div><div class="contact-label">Student Technology Services</div><div class="contact-detail">(657) 278-2800 — SHCC | Software and loaner equipment</div></div></div>
                 <div class="contact-row"><div><div class="contact-label">Financial Aid</div><div class="contact-detail">(657) 278-3117 — GH 101</div></div></div>
-                <div class="contact-row"><div><div class="contact-label">Pollak Library</div><div class="contact-detail">(657) 278-3125 | <a href="http://www.library.fullerton.edu/" target="_blank" rel="noopener noreferrer">library.fullerton.edu</a></div></div></div>
+                <div class="contact-row"><div><div class="contact-label">Pollak Library</div><div class="contact-detail">(657) 278-3125 | <a href="http://www.library.fullerton.edu/" target="_blank" rel="noopener noreferrer">library.fullerton.edu<span class="sr-only"> (opens in new tab)</span></a></div></div></div>
                 <div class="contact-row"><div><div class="contact-label">Transfer Resource Center</div><div class="contact-detail">(657) 278-2738 — GH 229 | Peer mentors and study area for recent transfers</div></div></div>
-                <div class="contact-row"><div><div class="contact-label">Center for Careers in Teaching</div><div class="contact-detail">(657) 278-7130 — EC 379 | <a href="http://ed.fullerton.edu/cct/" target="_blank" rel="noopener noreferrer">ed.fullerton.edu/cct/</a></div></div></div>
+                <div class="contact-row"><div><div class="contact-label">Center for Careers in Teaching</div><div class="contact-detail">(657) 278-7130 — EC 379 | <a href="http://ed.fullerton.edu/cct/" target="_blank" rel="noopener noreferrer">ed.fullerton.edu/cct/<span class="sr-only"> (opens in new tab)</span></a></div></div></div>
             </div>
 
             <div class="card">
@@ -790,7 +792,7 @@
                 <div class="contact-row"><div><div class="contact-label">Student Health Center</div><div class="contact-detail">(657) 278-7859 — LH-530</div></div></div>
                 <div class="contact-row"><div><div class="contact-label">Disability Support Services</div><div class="contact-detail">(657) 278-3040 — SHCC/TH</div></div></div>
                 <div class="contact-row"><div><div class="contact-label">Tuffy's Basic Needs (food, clothing, emergency aid)</div><div class="contact-detail">(657) 278-8398 — MH 525</div></div></div>
-                <div class="contact-row"><div><div class="contact-label">Project Rebound (formerly incarcerated students)</div><div class="contact-detail">(657) 278-2714 — PLN/PLS | <a href="https://www.fullerton.edu/rebound/" target="_blank" rel="noopener noreferrer">fullerton.edu/rebound/</a></div></div></div>
+                <div class="contact-row"><div><div class="contact-label">Project Rebound (formerly incarcerated students)</div><div class="contact-detail">(657) 278-2714 — PLN/PLS | <a href="https://www.fullerton.edu/rebound/" target="_blank" rel="noopener noreferrer">fullerton.edu/rebound/<span class="sr-only"> (opens in new tab)</span></a></div></div></div>
                 <div class="contact-row"><div><div class="contact-label">Veterans Resource Center</div><div class="contact-detail">(657) 278-7082 — PLN 200 | <a href="mailto:vss@fullerton.edu">vss@fullerton.edu</a></div></div></div>
                 <div class="contact-row"><div><div class="contact-label">African American Resource Center</div><div class="contact-detail">(657) 278-3230 — PLS 180, Rm 182 | <a href="mailto:aarc@fullerton.edu">aarc@fullerton.edu</a></div></div></div>
                 <div class="contact-row"><div><div class="contact-label">Asian Pacific American Resource Center</div><div class="contact-detail">(657) 278-3742 — PLS 180, Rm 187 | <a href="mailto:aparc@fullerton.edu">aparc@fullerton.edu</a></div></div></div>
@@ -804,15 +806,15 @@
             <div class="card">
                 <h3><i class="fas fa-link" aria-hidden="true"></i> Quick Links</h3>
                 <ul class="resource-list">
-                    <li><i class="fas fa-list-check" aria-hidden="true"></i> <a href="https://paj.fullerton.edu/criminaljustice/major/" target="_blank" rel="noopener noreferrer">CJ Major Requirements by Catalog Year</a></li>
-                    <li><i class="fas fa-file-lines" aria-hidden="true"></i> <a href="https://docs.google.com/document/d/1ut0vbgFtBz0hmnh83wVZoRUkIlELQH993yXrqItHuY8/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Approved Related Fields Courses</a></li>
-                    <li><i class="fas fa-clock" aria-hidden="true"></i> <a href="https://paj.fullerton.edu/criminaljustice/advising/cj-advising.html" target="_blank" rel="noopener noreferrer">Current Walk-In Advising Hours</a></li>
-                    <li><i class="fas fa-calculator" aria-hidden="true"></i> <a href="https://www.fullerton.edu/aac/resources/gpa_calculator.php" target="_blank" rel="noopener noreferrer">CSUF GPA Calculator</a></li>
-                    <li><i class="fas fa-graduation-cap" aria-hidden="true"></i> <a href="http://records.fullerton.edu" target="_blank" rel="noopener noreferrer">Graduation Check — Records Office</a></li>
-                    <li><i class="fas fa-triangle-exclamation" aria-hidden="true"></i> <a href="https://hss.fullerton.edu/student_success_team/probation.aspx" target="_blank" rel="noopener noreferrer">Academic Notice / Probation Resources</a></li>
-                    <li><i class="fas fa-hand-holding-dollar" aria-hidden="true"></i> <a href="http://www.fullerton.edu/financialaid/general/scholarships.php" target="_blank" rel="noopener noreferrer">CSUF Scholarships</a></li>
-                    <li><i class="fas fa-microscope" aria-hidden="true"></i> <a href="http://www.fullerton.edu/mcnair/" target="_blank" rel="noopener noreferrer">McNair Scholars Program</a></li>
-                    <li><i class="fas fa-user" aria-hidden="true"></i> <a href="http://hss.fullerton.edu/paj/Faculty/part_time_faculty.aspx" target="_blank" rel="noopener noreferrer">Part-Time Faculty Contact Info</a></li>
+                    <li><i class="fas fa-list-check" aria-hidden="true"></i> <a href="https://paj.fullerton.edu/criminaljustice/major/" target="_blank" rel="noopener noreferrer">CJ Major Requirements by Catalog Year<span class="sr-only"> (opens in new tab)</span></a></li>
+                    <li><i class="fas fa-file-lines" aria-hidden="true"></i> <a href="https://docs.google.com/document/d/1ut0vbgFtBz0hmnh83wVZoRUkIlELQH993yXrqItHuY8/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Approved Related Fields Courses<span class="sr-only"> (opens in new tab)</span></a></li>
+                    <li><i class="fas fa-clock" aria-hidden="true"></i> <a href="https://paj.fullerton.edu/criminaljustice/advising/cj-advising.html" target="_blank" rel="noopener noreferrer">Current Walk-In Advising Hours<span class="sr-only"> (opens in new tab)</span></a></li>
+                    <li><i class="fas fa-calculator" aria-hidden="true"></i> <a href="https://www.fullerton.edu/aac/resources/gpa_calculator.php" target="_blank" rel="noopener noreferrer">CSUF GPA Calculator<span class="sr-only"> (opens in new tab)</span></a></li>
+                    <li><i class="fas fa-graduation-cap" aria-hidden="true"></i> <a href="http://records.fullerton.edu" target="_blank" rel="noopener noreferrer">Graduation Check — Records Office<span class="sr-only"> (opens in new tab)</span></a></li>
+                    <li><i class="fas fa-triangle-exclamation" aria-hidden="true"></i> <a href="https://hss.fullerton.edu/student_success_team/probation.aspx" target="_blank" rel="noopener noreferrer">Academic Notice / Probation Resources<span class="sr-only"> (opens in new tab)</span></a></li>
+                    <li><i class="fas fa-hand-holding-dollar" aria-hidden="true"></i> <a href="http://www.fullerton.edu/financialaid/general/scholarships.php" target="_blank" rel="noopener noreferrer">CSUF Scholarships<span class="sr-only"> (opens in new tab)</span></a></li>
+                    <li><i class="fas fa-microscope" aria-hidden="true"></i> <a href="http://www.fullerton.edu/mcnair/" target="_blank" rel="noopener noreferrer">McNair Scholars Program<span class="sr-only"> (opens in new tab)</span></a></li>
+                    <li><i class="fas fa-user" aria-hidden="true"></i> <a href="http://hss.fullerton.edu/paj/Faculty/part_time_faculty.aspx" target="_blank" rel="noopener noreferrer">Part-Time Faculty Contact Info<span class="sr-only"> (opens in new tab)</span></a></li>
                 </ul>
             </div>
         </section>
@@ -851,9 +853,9 @@
             <div class="footer-section social-media text-sm">
                 <h3 class="text-lg font-semibold mb-4">Stay Connected</h3>
                 <ul class="space-y-2">
-                    <li><a href="https://hss.fullerton.edu/paj/" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline"><i class="fas fa-globe" aria-hidden="true"></i> PAJ Division Website</a></li>
-                    <li><a href="https://fullerton.campuslabs.com/engage/organization/cjsa" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline"><i class="fas fa-users" aria-hidden="true"></i> CJSA on TitanLink</a></li>
-                    <li><a href="https://fullerton.campuslabs.com/engage/organization/alphaphisigma" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline"><i class="fas fa-award" aria-hidden="true"></i> Alpha Phi Sigma on TitanLink</a></li>
+                    <li><a href="https://hss.fullerton.edu/paj/" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline"><i class="fas fa-globe" aria-hidden="true"></i> PAJ Division Website<span class="sr-only"> (opens in new tab)</span></a></li>
+                    <li><a href="https://fullerton.campuslabs.com/engage/organization/cjsa" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline"><i class="fas fa-users" aria-hidden="true"></i> CJSA on TitanLink<span class="sr-only"> (opens in new tab)</span></a></li>
+                    <li><a href="https://fullerton.campuslabs.com/engage/organization/alphaphisigma" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline"><i class="fas fa-award" aria-hidden="true"></i> Alpha Phi Sigma on TitanLink<span class="sr-only"> (opens in new tab)</span></a></li>
                 </ul>
             </div>
         </div>

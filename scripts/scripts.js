@@ -55,7 +55,9 @@ function updateThemeToggleIcon(theme) {
 function syncThemeToggleState(theme) {
     const themeToggle = document.querySelector('.theme-toggle');
     if (!themeToggle) return;
-    themeToggle.setAttribute('aria-pressed', (theme === 'dark').toString());
+    // The dynamic "Switch to X mode" label already conveys state; pairing it
+    // with aria-pressed announces two contradictory state systems (WCAG 4.1.2)
+    themeToggle.removeAttribute('aria-pressed');
 }
 // Concentration Tabs Functionality
 function initializeTabs() {

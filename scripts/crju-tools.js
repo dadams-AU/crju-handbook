@@ -84,10 +84,15 @@ function initializeCareerExplorer() {
 
     pills.forEach((pill) => {
         pill.addEventListener('click', () => {
+            const wasActive = pill.classList.contains('active');
             pills.forEach((p) => {
                 p.classList.remove('active');
                 p.setAttribute('aria-pressed', 'false');
             });
+            if (wasActive) {
+                closeCareer();
+                return;
+            }
             pill.classList.add('active');
             pill.setAttribute('aria-pressed', 'true');
             renderCareer(pill.getAttribute('data-career'));
@@ -96,13 +101,27 @@ function initializeCareerExplorer() {
     });
 }
 
+function closeCareer() {
+    const detail = document.getElementById('career-detail');
+    const prompt = document.getElementById('career-prompt');
+    const status = document.getElementById('career-status');
+    if (detail) {
+        detail.hidden = true;
+        detail.innerHTML = '';
+    }
+    if (prompt) prompt.hidden = false;
+    if (status) status.textContent = 'Career guide closed.';
+}
+
 function renderCareer(key) {
     const data = careers[key];
     const detail = document.getElementById('career-detail');
     const prompt = document.getElementById('career-prompt');
+    const status = document.getElementById('career-status');
     if (!data || !detail) return;
 
     if (prompt) prompt.hidden = true;
+    if (status) status.textContent = data.title + ' career guide loaded below.';
     detail.hidden = false;
     detail.innerHTML = `
         <div class="card">
@@ -252,6 +271,13 @@ function toggleCourse(id, row) {
         /* private-browsing modes may block storage; tracker still works for the session */
     }
     updateTrackerProgress();
+
+    // WCAG 4.1.3: the stat boxes are not live regions, so announce the update
+    if (typeof announceToScreenReader === 'function') {
+        const done = Object.values(trackerChecked).filter(Boolean).length * 3;
+        const pct = Math.min(100, Math.round((done / TRACKER_TOTAL_UNITS) * 100));
+        announceToScreenReader(done + ' units done, ' + Math.max(0, TRACKER_TOTAL_UNITS - done) + ' units left, ' + pct + '% complete.');
+    }
 }
 
 function updateTrackerProgress() {
@@ -337,9 +363,11 @@ function pickPlanOption(key, val, button) {
     planState[key] = val;
     button.closest('.plan-step').querySelectorAll('.opt-btn').forEach((b) => {
         b.classList.remove('sel');
+        b.setAttribute('aria-pressed', 'false');
         b.querySelector('.opt-check').textContent = '';
     });
     button.classList.add('sel');
+    button.setAttribute('aria-pressed', 'true');
     button.querySelector('.opt-check').textContent = '✓';
 
     if (key === 'entry') {
@@ -350,14 +378,22 @@ function pickPlanOption(key, val, button) {
             ? [['4', '4 years (30+ units/year)'], ['5', '5 years (24+ units/year)']]
             : [['2', '2 years (30+ units/year)'], ['3', '3 years (24+ units/year)']];
         document.getElementById('ps-1-opts').innerHTML = options
-            .map(([v, label]) => `<button type="button" class="opt-btn" data-key="years" data-val="${v}"><span class="opt-check" aria-hidden="true"></span><span>${label}</span></button>`)
+            .map(([v, label]) => `<button type="button" class="opt-btn" data-key="years" data-val="${v}" aria-pressed="false"><span class="opt-check" aria-hidden="true"></span><span>${label}</span></button>`)
             .join('');
+        announcePlanner('Question 2 of 3 revealed: How many years do you have?');
     }
     if (key === 'years') {
         document.getElementById('ps-2').classList.remove('plan-step-hidden');
+        announcePlanner('Question 3 of 3 revealed: Weekly hours on work, family, and commuting?');
     }
     if (key === 'hours') {
         renderPlanResult(val);
+    }
+}
+
+function announcePlanner(message) {
+    if (typeof announceToScreenReader === 'function') {
+        announceToScreenReader(message);
     }
 }
 
@@ -366,6 +402,13 @@ function renderPlanResult(hours) {
     const mapKey = (planState.entry === 'freshman' ? 'f' : 't') + planState.years;
     const map = roadMaps[mapKey] || roadMaps.f4;
     const colWidth = Math.floor(100 / map.heads.length);
+
+    // Announce a one-line status; the table itself stays out of the live
+    // region so screen readers can navigate it with full table semantics
+    const statusEl = document.getElementById('plan-status');
+    if (statusEl) {
+        statusEl.textContent = 'Your personalized road map is ready below — recommended load ' + maxUnits + ' units per semester.';
+    }
 
     document.getElementById('plan-result').innerHTML = `
         <div class="alert-box success"><i class="fas fa-circle-check" aria-hidden="true"></i><span>Recommended load: <strong>${maxUnits} units/semester</strong> given your outside commitments. Remember: max 18 units/semester (petition to exceed). Consult your advisor regularly.</span></div>

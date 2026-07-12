@@ -30,7 +30,7 @@
         <p class="last-updated">Last updated: <time datetime="2026-07-11">July 11, 2026</time></p>
     </header>
 
-    <main id="policy-main" role="main">
+    <main id="policy-main" role="main" tabindex="-1">
         <section aria-labelledby="commitment-heading">
             <h2 id="commitment-heading">Commitment to Accessibility</h2>
             <p>California State University, Fullerton (CSUF) is committed to ensuring digital accessibility for all users, including those with disabilities. The CRJU Undergraduate Advising Handbook is designed to be accessible to everyone, regardless of their technology or abilities.</p>
@@ -38,7 +38,7 @@
 
         <section aria-labelledby="standards-heading">
             <h2 id="standards-heading">Standards and Compliance</h2>
-            <p>This website aims to conform to the <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener noreferrer">Web Content Accessibility Guidelines (WCAG) 2.2</a> Level AA. We continuously review and improve accessibility features.</p>
+            <p>This website aims to conform to the <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener noreferrer">Web Content Accessibility Guidelines (WCAG) 2.2<span class="sr-only"> (opens in new tab)</span></a> Level AA. We continuously review and improve accessibility features.</p>
             
             <h3>Conformance Level</h3>
             <p><strong>WCAG 2.2 Level AA</strong> — This means our content is accessible to most users with disabilities, including those who use:</p>
@@ -52,22 +52,13 @@
 
         <section aria-labelledby="testing-heading">
             <h2 id="testing-heading">Accessibility Testing</h2>
-            <p>We regularly test this website with assistive technologies to ensure compatibility.</p>
-            
-            <h3>Assistive Technologies Tested</h3>
+            <p>This website was audited against WCAG 2.2 Level AA in July 2026. Testing performed to date includes:</p>
             <ul>
-                <li><strong>Screen readers:</strong> NVDA, JAWS, VoiceOver (Mac/iOS), TalkBack (Android)</li>
-                <li><strong>Keyboard navigation:</strong> Tab key, arrow keys, skip links</li>
-                <li><strong>Screen magnification:</strong> ZoomText, browser zoom up to 200%</li>
-                <li><strong>Voice control:</strong> Dragon NaturallySpeaking, Voice Control (iOS)</li>
-            </ul>
-            
-            <h3>Automated Testing</h3>
-            <p>We use automated tools including:</p>
-            <ul>
-                <li>WAVE (Web Accessibility Evaluation Tool)</li>
-                <li>Lighthouse Accessibility Audit</li>
-                <li>axe DevTools</li>
+                <li><strong>Automated scanning:</strong> axe-core run on every page, in both the light and dark color themes, with all interactive tools exercised</li>
+                <li><strong>Keyboard navigation:</strong> scripted keyboard-only testing of every interactive element — tab order, skip link, focus visibility, Escape handling, and absence of keyboard traps</li>
+                <li><strong>Color contrast:</strong> contrast ratios computed from rendered colors for both themes</li>
+                <li><strong>Zoom and reflow:</strong> layout verified at 320px viewport width (equivalent to 400% zoom)</li>
+                <li><strong>Reduced motion:</strong> animations and smooth scrolling respect the <code>prefers-reduced-motion</code> setting</li>
             </ul>
         </section>
 
@@ -75,12 +66,13 @@
             <h2 id="features-heading">Accessibility Features</h2>
             <ul>
                 <li><strong>Keyboard navigability:</strong> All interactive elements are accessible via keyboard</li>
-                <li><strong>Screen reader compatibility:</strong> Proper ARIA labels, roles, and semantic HTML</li>
-                <li><strong>High-contrast text:</strong> Minimum 4.5:1 contrast ratio for all text</li>
-                <li><strong>Responsive design:</strong> Works on all screen sizes and orientations</li>
-                <li><strong>Focus indicators:</strong> Visible focus states for all interactive elements</li>
+                <li><strong>Semantic structure:</strong> Landmark regions, logical heading hierarchy, native HTML controls, and ARIA state attributes on custom widgets</li>
+                <li><strong>Status announcements:</strong> Progress updates and dynamically revealed content are announced to screen readers via live regions</li>
+                <li><strong>Color contrast:</strong> Text and UI indicators meet WCAG AA contrast minimums in both light and dark themes</li>
+                <li><strong>Responsive design:</strong> Works on all screen sizes and orientations without horizontal scrolling</li>
+                <li><strong>Focus indicators:</strong> Visible, theme-aware focus states for all interactive elements</li>
                 <li><strong>Alt text:</strong> Descriptive alternative text for all images</li>
-                <li><strong>Heading structure:</strong> Logical heading hierarchy for easy navigation</li>
+                <li><strong>New-tab warnings:</strong> Links that open in a new tab say so to assistive technology</li>
             </ul>
         </section>
 
@@ -88,7 +80,8 @@
             <h2 id="limitations-heading">Known Limitations</h2>
             <p>Despite our best efforts, some content may not be fully accessible. We are working to address these issues:</p>
             <ul>
-                <li>Some PDF documents may not be fully accessible (working on remediation)</li>
+                <li>Live screen reader testing (NVDA, VoiceOver) has not yet been completed; the site follows ARIA best practices and a live assistive-technology pass is planned</li>
+                <li>The downloadable PDF version of the handbook may not be fully accessible (working on remediation)</li>
                 <li>Third-party embedded content may have varying accessibility</li>
             </ul>
         </section>
@@ -108,8 +101,8 @@
             <h2 id="csuf-accessibility-heading">CSUF Accessibility Resources</h2>
             <p>For university-wide accessibility resources, visit:</p>
             <ul>
-                <li><a href="https://www.fullerton.edu/accessibility/" target="_blank" rel="noopener noreferrer">CSUF Accessibility Portal</a></li>
-                <li><a href="https://drc.fullerton.edu/" target="_blank" rel="noopener noreferrer">Disability Resource Center (DRC)</a></li>
+                <li><a href="https://www.fullerton.edu/accessibility/" target="_blank" rel="noopener noreferrer">CSUF Accessibility Portal<span class="sr-only"> (opens in new tab)</span></a></li>
+                <li><a href="https://drc.fullerton.edu/" target="_blank" rel="noopener noreferrer">Disability Resource Center (DRC)<span class="sr-only"> (opens in new tab)</span></a></li>
             </ul>
         </section>
     </main>
