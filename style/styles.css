@@ -2290,12 +2290,18 @@ footer a[href^="mailto"] {
     }
 }
 
-/* Logo wordmark is navy-on-transparent; keep it on a white plate so it
-   stays legible in dark mode */
-.logo-plate {
-    background: #ffffff;
-    padding: 1rem 1.25rem;
-    border-radius: 8px;
+/* Theme-matched logo lockups: navy wordmark in light mode, reversed
+   (white) wordmark in dark mode */
+.logo-dark {
+    display: none;
+}
+
+[data-theme="dark"] .logo-light {
+    display: none;
+}
+
+[data-theme="dark"] .logo-dark {
+    display: block;
 }
 
 /* Author display rules (e.g. .alert-box{display:flex}) would otherwise
