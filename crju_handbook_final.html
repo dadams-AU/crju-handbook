@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRJU Undergraduate Advising Handbook — CSUF Fall 2026</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --blue: #003A70; --gold: #E87722; --light-blue: #185FA5;
+    --bg: #f7f8fa; --surface: #fff; --border: #e2e5ea;
+    --text: #1a1a2e; --muted: #6b7280; --light: #EAF1FB;
+  }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+  .gold-bar { height: 4px; background: var(--gold); }
+  .site-header { background: var(--blue); color: #fff; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.18); }
+  .site-header h1 { font-size: 16px; font-weight: 600; }
+  .site-header span { font-size: 12px; opacity: 0.7; }
+  .layout { display: flex; min-height: calc(100vh - 64px); }
+  .sidebar { width: 220px; background: var(--surface); border-right: 1px solid var(--border); padding: 20px 0; flex-shrink: 0; position: sticky; top: 64px; height: calc(100vh - 64px); overflow-y: auto; }
+  .main { flex: 1; padding: 28px 32px; max-width: 900px; }
+  .nav-section { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); padding: 14px 20px 6px; }
+  .nav-item { display: flex; align-items: center; gap: 9px; padding: 9px 20px; font-size: 13px; color: var(--text); cursor: pointer; border-left: 3px solid transparent; transition: all 0.15s; text-decoration: none; }
+  .nav-item:hover { background: var(--bg); color: var(--light-blue); }
+  .nav-item.active { background: var(--light); color: var(--light-blue); border-left-color: var(--light-blue); font-weight: 600; }
+  .panel { display: none; }
+  .panel.active { display: block; }
+  .page-title { font-size: 26px; font-weight: 700; color: var(--blue); margin-bottom: 6px; }
+  .page-sub { font-size: 14px; color: var(--muted); margin-bottom: 24px; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; margin-bottom: 14px; }
+  .card-title { font-size: 14px; font-weight: 600; color: var(--blue); margin-bottom: 10px; display: flex; align-items: center; gap: 7px; }
+  .section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); margin: 20px 0 8px; }
+  .badge { display: inline-block; font-size: 11px; font-weight: 500; padding: 3px 9px; border-radius: 20px; margin: 2px; }
+  .badge-blue { background: #dbeafe; color: #1e40af; }
+  .badge-gray { background: #f3f4f6; color: #374151; }
+  .alert { padding: 12px 16px; border-radius: 8px; font-size: 13px; margin-bottom: 14px; display: flex; gap: 10px; line-height: 1.5; }
+  .alert-info { background: #dbeafe; color: #1e3a8a; border-left: 3px solid #3b82f6; }
+  .alert-warn { background: #fef3c7; color: #78350f; border-left: 3px solid var(--gold); }
+  .alert-success { background: #d1fae5; color: #064e3b; border-left: 3px solid #10b981; }
+  .pill-wrap { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  .career-pill { padding: 8px 16px; border-radius: 24px; border: 1.5px solid var(--border); font-size: 13px; cursor: pointer; background: var(--surface); color: var(--text); transition: all 0.15s; font-weight: 500; }
+  .career-pill:hover { border-color: var(--light-blue); color: var(--light-blue); background: var(--light); }
+  .career-pill.active { background: var(--blue); color: #fff; border-color: var(--blue); }
+  .progress-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 14px; }
+  .stat-box { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px; text-align: center; }
+  .stat-num { font-size: 28px; font-weight: 700; color: var(--blue); }
+  .stat-label { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .prog-bar-bg { background: #e5e7eb; border-radius: 20px; height: 10px; overflow: hidden; margin-bottom: 16px; }
+  .prog-bar { height: 10px; border-radius: 20px; background: linear-gradient(90deg, var(--blue), var(--light-blue)); transition: width 0.5s ease; }
+  .course-row { display: flex; align-items: center; gap: 10px; padding: 9px 4px; border-bottom: 1px solid var(--border); cursor: pointer; border-radius: 4px; }
+  .course-row:last-child { border-bottom: none; }
+  .course-row:hover { background: var(--bg); }
+  .course-row input[type=checkbox] { width: 16px; height: 16px; accent-color: var(--blue); flex-shrink: 0; cursor: pointer; }
+  .c-code { font-size: 12px; font-weight: 700; color: var(--light-blue); min-width: 80px; }
+  .c-name { font-size: 13px; flex: 1; }
+  .c-units { font-size: 12px; color: var(--muted); }
+  .course-row.done .c-name { text-decoration: line-through; color: var(--muted); }
+  .opt-btn { width: 100%; text-align: left; padding: 12px 16px; border-radius: 8px; border: 1.5px solid var(--border); background: var(--surface); color: var(--text); font-size: 14px; cursor: pointer; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; transition: all 0.15s; }
+  .opt-btn:hover { border-color: var(--light-blue); }
+  .opt-btn.sel { border-color: var(--light-blue); background: var(--light); color: var(--blue); }
+  .opt-check { width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; }
+  .opt-btn.sel .opt-check { background: var(--light-blue); border-color: var(--light-blue); color: #fff; }
+  .plan-step { margin-bottom: 24px; }
+  .plan-step-hidden { display: none; }
+  .step-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: var(--muted); margin-bottom: 10px; }
+  .step-dot { width: 22px; height: 22px; border-radius: 50%; background: var(--blue); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; }
+  .data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .data-table th { background: var(--blue); color: #fff; padding: 9px 12px; text-align: left; font-weight: 600; }
+  .data-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .data-table tr:nth-child(even) td { background: #f9fafb; }
+  .data-table tr:hover td { background: var(--light); }
+  .rm-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .rm-table .yr-h { background: var(--blue); color: #fff; padding: 7px 8px; text-align: center; font-weight: 600; }
+  .rm-table .sem-h { background: var(--gold); color: #fff; padding: 5px 8px; text-align: center; font-size: 11px; font-weight: 600; }
+  .rm-table td { padding: 6px 8px; border: 1px solid var(--border); vertical-align: top; font-size: 12px; background: var(--surface); }
+  .rm-table tr:nth-child(odd) td { background: #f9fafb; }
+  .qr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 18px; }
+  .qr-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px; }
+  .qr-label { font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+  .qr-val { font-size: 20px; font-weight: 700; color: var(--blue); }
+  .accordion { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 8px; overflow: hidden; }
+  .acc-head { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; cursor: pointer; font-size: 13px; font-weight: 600; background: var(--surface); color: var(--text); user-select: none; }
+  .acc-head:hover { background: var(--bg); }
+  .acc-body { display: none; padding: 12px 16px; font-size: 13px; color: var(--muted); line-height: 1.65; border-top: 1px solid var(--border); background: #fafafa; }
+  .acc-body.open { display: block; }
+  .contact-row { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .contact-row:last-child { border-bottom: none; }
+  .contact-label { font-weight: 600; color: var(--text); }
+  .contact-detail { color: var(--muted); }
+  .site-footer { background: var(--blue); color: rgba(255,255,255,0.65); text-align: center; padding: 14px; font-size: 12px; margin-top: 40px; }
+  a { color: var(--light-blue); }
+  @media (max-width: 700px) {
+    .layout { flex-direction: column; }
+    .sidebar { width: 100%; height: auto; position: static; border-right: none; border-bottom: 1px solid var(--border); display: flex; overflow-x: auto; padding: 0; }
+    .nav-section { display: none; }
+    .nav-item { padding: 12px 14px; border-left: none; border-bottom: 3px solid transparent; white-space: nowrap; }
+    .nav-item.active { border-left: none; border-bottom-color: var(--light-blue); }
+    .main { padding: 18px 16px; }
+    .qr-grid, .progress-stats { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="gold-bar"></div>
+<header class="site-header">
+  <h1>📋 CRJU Advising Handbook</h1>
+  <span>Cal State Fullerton &mdash; Fall 2026</span>
+</header>
+<div class="layout">
+  <nav class="sidebar">
+    <div class="nav-section">Explore</div>
+    <a class="nav-item active" onclick="show('explore')" href="#">🎯 Career Explorer</a>
+    <a class="nav-item" onclick="show('tracker')" href="#">✅ My Course Tracker</a>
+    <a class="nav-item" onclick="show('planner')" href="#">🗺️ Plan My Path</a>
+    <div class="nav-section">Reference</div>
+    <a class="nav-item" onclick="show('major')" href="#">📚 The Major</a>
+    <a class="nav-item" onclick="show('minors')" href="#">➕ Minors</a>
+    <a class="nav-item" onclick="show('policies')" href="#">📄 Policies &amp; GPA</a>
+    <a class="nav-item" onclick="show('opportunities')" href="#">🚀 Opportunities</a>
+    <a class="nav-item" onclick="show('contacts')" href="#">📞 Contacts &amp; Resources</a>
+  </nav>
+  <main class="main">
+
+    <!-- CAREER EXPLORER -->
+    <section class="panel active" id="panel-explore">
+      <h2 class="page-title">Career Explorer</h2>
+      <p class="page-sub">Select what calls to you — see the courses, minors, and contacts that match.</p>
+      <div class="pill-wrap">
+        <button class="career-pill" onclick="pickCareer('enforce',this)">⚖️ Law Enforcement</button>
+        <button class="career-pill" onclick="pickCareer('law',this)">⚖️ Law &amp; Courts</button>
+        <button class="career-pill" onclick="pickCareer('corrections',this)">🏛️ Corrections</button>
+        <button class="career-pill" onclick="pickCareer('forensics',this)">🔬 Forensics / CSI</button>
+        <button class="career-pill" onclick="pickCareer('victims',this)">💛 Victim Services</button>
+        <button class="career-pill" onclick="pickCareer('policy',this)">📊 Policy &amp; Research</button>
+        <button class="career-pill" onclick="pickCareer('federal',this)">🇺🇸 Federal Agencies</button>
+      </div>
+      <div id="career-detail" style="display:none;"></div>
+      <div id="career-prompt" class="alert alert-info">👆 Pick a career area above to see a personalized guide — recommended courses, minors, internship tips, and who to contact.</div>
+    </section>
+
+    <!-- COURSE TRACKER -->
+    <section class="panel" id="panel-tracker">
+      <h2 class="page-title">My Course Tracker</h2>
+      <p class="page-sub">Check off courses as you complete them. Progress saves in your browser.</p>
+      <div class="progress-stats">
+        <div class="stat-box"><div class="stat-num" id="t-done">0</div><div class="stat-label">Units done</div></div>
+        <div class="stat-box"><div class="stat-num" id="t-left">54</div><div class="stat-label">Units left</div></div>
+        <div class="stat-box"><div class="stat-num" id="t-pct" style="color:var(--gold);">0%</div><div class="stat-label">Complete</div></div>
+      </div>
+      <div class="prog-bar-bg"><div class="prog-bar" id="t-bar" style="width:0%"></div></div>
+      <div class="section-label">Core Courses — 18 units (all required)</div>
+      <div class="card" style="padding:4px 16px;" id="core-courses"></div>
+      <div class="section-label">Breadth Courses — choose 2 (6 units)</div>
+      <div class="card" style="padding:4px 16px;" id="breadth-courses"></div>
+      <div class="section-label">Upper-Division Electives — 15 units (9 must be 400-level)</div>
+      <div class="card" style="padding:4px 16px;" id="elective-courses"></div>
+      <div class="section-label">Related Fields — 12 units (catalog year 2026)</div>
+      <div class="card"><p style="font-size:13px;color:var(--muted);">Any 12 units from the <a href="https://docs.google.com/document/d/1ut0vbgFtBz0hmnh83wVZoRUkIlELQH993yXrqItHuY8/edit?usp=sharing" target="_blank">approved Related Fields course list</a>. Track these on your Titan Degree Audit.</p></div>
+      <div class="section-label">Upper Division Writing — 3 units (choose 1)</div>
+      <div class="card" style="padding:4px 16px;" id="writing-courses"></div>
+    </section>
+
+    <!-- PATH PLANNER -->
+    <section class="panel" id="panel-planner">
+      <h2 class="page-title">Plan My Path</h2>
+      <p class="page-sub">Answer three questions and get a personalized road map.</p>
+      <div class="plan-step" id="ps-0">
+        <div class="step-tag"><span class="step-dot">1</span> How did you arrive at CSUF?</div>
+        <button class="opt-btn" onclick="pickOpt('entry','freshman',this)"><span class="opt-check"></span><span><strong>Freshman</strong> — I started as a first-year student at CSUF</span></button>
+        <button class="opt-btn" onclick="pickOpt('entry','transfer',this)"><span class="opt-check"></span><span><strong>Transfer</strong> — I transferred from a community college</span></button>
+      </div>
+      <div class="plan-step plan-step-hidden" id="ps-1">
+        <div class="step-tag"><span class="step-dot">2</span> How many years do you have?</div>
+        <div id="ps-1-opts"></div>
+      </div>
+      <div class="plan-step plan-step-hidden" id="ps-2">
+        <div class="step-tag"><span class="step-dot">3</span> Weekly hours on work, family &amp; commuting?</div>
+        <button class="opt-btn" onclick="pickOpt('hours','0-9',this)"><span class="opt-check"></span> 0–9 hours — Mostly available to study</button>
+        <button class="opt-btn" onclick="pickOpt('hours','10-19',this)"><span class="opt-check"></span> 10–19 hours — Some outside commitments</button>
+        <button class="opt-btn" onclick="pickOpt('hours','20-29',this)"><span class="opt-check"></span> 20–29 hours — Significant commitments</button>
+        <button class="opt-btn" onclick="pickOpt('hours','30-39',this)"><span class="opt-check"></span> 30–39 hours — Very busy schedule</button>
+      </div>
+      <div id="plan-result"></div>
+    </section>
+
+    <!-- THE MAJOR -->
+    <section class="panel" id="panel-major">
+      <h2 class="page-title">The Criminal Justice Major</h2>
+      <p class="page-sub">54 units total (Catalog Year 2026). Minimum C- in every course. Minimum 2.0 major GPA.</p>
+      <div class="alert alert-warn">⚠️ <strong>New requirements take effect Fall 2026.</strong> If you enrolled before Fall 2026, check which catalog year applies to you. See the <a href="https://paj.fullerton.edu/criminaljustice/major/" target="_blank">Major Requirements website</a> for road maps by catalog year.</div>
+      <div class="card">
+        <div class="card-title">📌 Core Courses — 18 units (all required)</div>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:10px;">Core courses provide a solid basis for understanding criminal behavior and the criminal justice system.</p>
+        <table class="data-table"><tr><th>Code</th><th>Course</th><th>Units</th></tr>
+          <tr><td>CRJU 101</td><td>Introduction to Criminal Justice</td><td>3</td></tr>
+          <tr><td>CRJU 210</td><td>Concepts of Criminal Law</td><td>3</td></tr>
+          <tr><td>CRJU 301</td><td>Mythology of Crime and Justice</td><td>3</td></tr>
+          <tr><td>CRJU 330</td><td>Theories of Crime and Delinquency</td><td>3</td></tr>
+          <tr><td>CRJU 340</td><td>Criminal Justice Research Methodology</td><td>3</td></tr>
+          <tr><td>CRJU 385</td><td>Race, Inequality, and the Criminal Justice System</td><td>3</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <div class="card-title">📌 Breadth Courses — 6 units (choose 2)</div>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:10px;">Pay attention to prerequisites — some breadth courses are required before upper-division electives.</p>
+        <table class="data-table"><tr><th>Code</th><th>Course</th><th>Units</th></tr>
+          <tr><td>CRJU 302</td><td>Introduction to Courts</td><td>3</td></tr>
+          <tr><td>CRJU 315</td><td>Police and Society</td><td>3</td></tr>
+          <tr><td>CRJU 345</td><td>Complexities in Corrections</td><td>3</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <div class="card-title">📌 Upper-Division Electives — 15 units (9 must be 400-level)</div>
+        <p style="font-size:13px;color:var(--muted);">All 300- and 400-level CRJU courses not listed as core or breadth count as electives. Use the Course Tracker for the full list.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">📌 Related Fields — 12 units (Catalog Year 2026)</div>
+        <p style="font-size:13px;color:var(--muted);">Choose from the <a href="https://docs.google.com/document/d/1ut0vbgFtBz0hmnh83wVZoRUkIlELQH993yXrqItHuY8/edit?usp=sharing" target="_blank">approved Related Fields list</a>. Many minor courses qualify.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">📌 Upper Division Writing — 3 units (choose 1)</div>
+        <table class="data-table"><tr><th>Code</th><th>Course</th><th>Note</th></tr>
+          <tr><td>ENGL 301</td><td>Advanced College Writing</td><td></td></tr>
+          <tr><td>ENGL 365</td><td>Legal Writing</td><td>Recommended for pre-law students</td></tr>
+        </table>
+      </div>
+      <div class="alert alert-warn">🎓 <strong>Catalog Year 2025 and earlier:</strong> Major requires 39 units (core 21 units + electives 15 units + writing 3 units). Minimum C- (or C for 2013–2018 catalog). No Related Fields requirement.</div>
+    </section>
+
+    <!-- MINORS -->
+    <section class="panel" id="panel-minors">
+      <h2 class="page-title">Minors</h2>
+      <p class="page-sub">Many minors pair well with Criminal Justice — and some courses can double-count for GE.</p>
+      <div class="card">
+        <div class="card-title">🎓 Criminal Justice Minor — 18 units</div>
+        <table class="data-table"><tr><th>Requirement</th><th>Courses</th><th>Units</th></tr>
+          <tr><td>Required Core</td><td>CRJU 301, 330, 385</td><td>9</td></tr>
+          <tr><td>Breadth (choose 1)</td><td>CRJU 302, 315, or 345</td><td>3</td></tr>
+          <tr><td>Electives (choose 2)</td><td>Any two upper-division CRJU courses</td><td>6</td></tr>
+        </table>
+      </div>
+      <div class="section-label">Complementary Minors by Career Interest</div>
+      <div class="card">
+        <table class="data-table">
+          <tr><th>Minor</th><th>Units</th><th>Office</th><th>Best for…</th></tr>
+          <tr><td>African American Studies</td><td>21</td><td>H-314</td><td>Understanding society/diversity</td></tr>
+          <tr><td>American Studies</td><td>21</td><td>GH-313</td><td>Understanding society</td></tr>
+          <tr><td>Anthropology</td><td>21</td><td>MH-426</td><td>CSI, Forensic Science</td></tr>
+          <tr><td>Asian American Studies</td><td>18</td><td>H-314</td><td>Understanding society/diversity</td></tr>
+          <tr><td>Asian Studies</td><td>18</td><td>H-314</td><td>Understanding society/diversity</td></tr>
+          <tr><td>Business Administration</td><td>27</td><td>SMGH-3100</td><td>Investigations (Accounting)</td></tr>
+          <tr><td>Business Data Analytics</td><td>21</td><td>SMGH-4113</td><td>Computer Forensics, Crime Analysis</td></tr>
+          <tr><td>Cell &amp; Molecular Biology</td><td>21</td><td>MH-205</td><td>CSI, Forensic Science</td></tr>
+          <tr><td>Chemistry</td><td>24</td><td>MH-580</td><td>CSI, Forensic Science</td></tr>
+          <tr><td>Chicana and Chicano Studies</td><td>15</td><td>H-314</td><td>Understanding society/diversity</td></tr>
+          <tr><td>Child &amp; Adolescent Studies</td><td>21</td><td>EC-503</td><td>Juvenile delinquency, Victims</td></tr>
+          <tr><td>Communication Studies</td><td>18</td><td>CP-420</td><td>Public service, any career</td></tr>
+          <tr><td>Computer Science</td><td>15</td><td>CS-522</td><td>Computer Forensics, Analytics, IT in CJ</td></tr>
+          <tr><td>Economics</td><td>24</td><td>SMGH-3313</td><td>Informed citizen, life management</td></tr>
+          <tr><td>Foreign Languages</td><td>varies</td><td>H-835A</td><td>Federal law enforcement</td></tr>
+          <tr><td>Geography</td><td>18</td><td>H-420A</td><td>GIS, Crime Analysis</td></tr>
+          <tr><td>History</td><td>24</td><td>H-815F</td><td>Understanding society</td></tr>
+          <tr><td>Human Services</td><td>21</td><td>EC-405</td><td>Public service, nonprofits, victims</td></tr>
+          <tr><td>Law, Politics, and Society</td><td>18</td><td>GH-511</td><td>Law</td></tr>
+          <tr><td>Philosophy</td><td>18</td><td>H-311</td><td>Law, critical thinking (highest LSAT scores)</td></tr>
+          <tr><td>Pre-Health Professions</td><td>24–25</td><td>KHS-223</td><td>Stress and life management</td></tr>
+          <tr><td>Psychology</td><td>21</td><td>H-830</td><td>Most CJ careers</td></tr>
+          <tr><td>Public Administration</td><td>21</td><td>GH-511</td><td>Government leadership, public service</td></tr>
+          <tr><td>Public Policy</td><td>21</td><td>GH-511</td><td>Policy analysis, public service</td></tr>
+          <tr><td>Public Relations</td><td>21</td><td>CP-400</td><td>LEA/public agency communications</td></tr>
+          <tr><td>Queer Studies</td><td>21</td><td>H-230</td><td>Understanding society/diversity</td></tr>
+          <tr><td>Sociology</td><td>21</td><td>CP-900</td><td>Understanding society</td></tr>
+          <tr><td>Women &amp; Gender Studies</td><td>24</td><td>H-230</td><td>Understanding society/diversity</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <!-- POLICIES -->
+    <section class="panel" id="panel-policies">
+      <h2 class="page-title">Policies &amp; GPA</h2>
+      <p class="page-sub">Know the rules before they catch you off guard.</p>
+      <div class="section-label">Academic Notice — Disqualification Thresholds</div>
+      <div class="qr-grid">
+        <div class="qr-card"><div class="qr-label">Freshmen (0–29 units)</div><div class="qr-val">1.50</div><div style="font-size:11px;color:var(--muted);">GPA below this → risk of dismissal</div></div>
+        <div class="qr-card"><div class="qr-label">Sophomores (30–59 units)</div><div class="qr-val">1.70</div><div style="font-size:11px;color:var(--muted);">GPA below this → risk of dismissal</div></div>
+        <div class="qr-card"><div class="qr-label">Juniors (60–89 units)</div><div class="qr-val">1.85</div><div style="font-size:11px;color:var(--muted);">GPA below this → risk of dismissal</div></div>
+        <div class="qr-card"><div class="qr-label">Seniors (90+ units)</div><div class="qr-val">1.95</div><div style="font-size:11px;color:var(--muted);">GPA below this → risk of dismissal</div></div>
+      </div>
+      <div class="section-label">Key Policies</div>
+      <div class="accordion">
+        <div class="acc-head" onclick="toggleAcc(this)">Minimum grade requirements ▾</div>
+        <div class="acc-body">You must earn a <strong>C- or better</strong> in every required course (catalog year 2019 and later). Catalog years 2013–2018 require a <strong>C or better</strong>. You also need a minimum 2.0 GPA in all attempted Criminal Justice courses.</div>
+      </div>
+      <div class="accordion">
+        <div class="acc-head" onclick="toggleAcc(this)">D grade rule — core vs. electives ▾</div>
+        <div class="acc-body"><strong>D grades do not count toward the major</strong> but do count as free elective units toward your 120-unit total.<br><br><strong>Core courses:</strong> If you earn a D, you must retake it until you earn at least a C-.<br><br><strong>Elective courses:</strong> A D does not require a retake, but you still need 15 elective units at C- or higher. Note: if you retake a D-grade course and pass, you will not receive additional units — the credit is already on your TDA.</div>
+      </div>
+      <div class="accordion">
+        <div class="acc-head" onclick="toggleAcc(this)">Course repeat policy ▾</div>
+        <div class="acc-body">
+          <strong>28-unit maximum</strong> on total repeated courses.<br><br>
+          <strong>Grade Forgiveness (up to 16 units):</strong> Original grade removed from GPA; only the repeat grade counts. Both stay on transcript. Only applies when both attempts are at CSUF.<br><br>
+          <strong>Grade Averaged (up to 12 units):</strong> Both grades count in your GPA.<br><br>
+          You cannot repeat a course where you earned a C or better. Maximum 3 total enrollments in any one course.
+        </div>
+      </div>
+      <div class="accordion">
+        <div class="acc-head" onclick="toggleAcc(this)">Graduation check — when &amp; how ▾</div>
+        <div class="acc-body">
+          Apply when you have <strong>85 units</strong> — approximately one year before graduation.<br><br>
+          <strong>How:</strong> Portal → Student Homepage → Academic Records → Apply/Pay for Graduation.<br><br>
+          Choose your graduation term carefully — an incorrect term can affect advising, enrollment, and financial aid. Consult your advisor or the HSS Graduation Specialist before applying.<br><br>
+          The department must approve your check. You must pay a <strong>$115 graduation fee</strong>. Need a 2.0 GPA overall and at least 120 total units.
+        </div>
+      </div>
+      <div class="accordion">
+        <div class="acc-head" onclick="toggleAcc(this)">Academic notice — what happens ▾</div>
+        <div class="acc-body">When your CSUF or cumulative GPA falls below 2.0, you are placed on academic notice. The College of HSS places a hold on your account. You must attend an Academic Notice Information Session and meet with the HSS Student Success Team to release it.<br><br><a href="https://hss.fullerton.edu/student_success_team/probation.aspx" target="_blank">HSS Probation info</a> | <a href="https://www.fullerton.edu/aac/resources/gpa_calculator.php" target="_blank">GPA Calculator</a></div>
+      </div>
+      <div class="accordion">
+        <div class="acc-head" onclick="toggleAcc(this)">How many units per semester? ▾</div>
+        <div class="acc-body">
+          Spend 2–3 hours studying for every unit of lecture (15 units = 45–60 hours/week on school).<br><br>
+          <table class="data-table" style="margin-top:8px;">
+            <tr><th>Outside hours/week</th><th>Recommended max units</th></tr>
+            <tr><td>0–9 hours</td><td>14–16 units</td></tr>
+            <tr><td>10–19 hours</td><td>13–14 units</td></tr>
+            <tr><td>20–29 hours</td><td>9–12 units</td></tr>
+            <tr><td>30–39 hours</td><td>6–9 units</td></tr>
+          </table>
+          <p style="margin-top:8px;"><strong>Current university policy limits students to 18 units per semester</strong>, but you can petition to exceed this.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- OPPORTUNITIES -->
+    <section class="panel" id="panel-opportunities">
+      <h2 class="page-title">Research &amp; Experiential Opportunities</h2>
+      <p class="page-sub">Your education doesn't end in the classroom.</p>
+      <div class="card">
+        <div class="card-title">🔬 Research Courses</div>
+        <p style="font-size:13px;margin-bottom:10px;"><strong>CRJU 499 — Independent Study (1–3 units, up to 6 total):</strong> Work one-on-one with a professor on your own project or assist with faculty research. Talk to your favorite professor — research interests are listed on the Criminal Justice web page.</p>
+        <p style="font-size:13px;"><strong>CRJU 491 — Applied Policy Research (3 units, permit only):</strong> Small-group real-world policy research. Offered every 2–3 years. Contact Dr. Phil Kopp or Dr. Christie Gardiner (<a href="mailto:cgardiner@fullerton.edu">cgardiner@fullerton.edu</a>).</p>
+      </div>
+      <div class="card">
+        <div class="card-title">💼 Internships — CRJU 495 &amp; CRJU 492</div>
+        <div class="alert alert-warn" style="margin-bottom:10px;">⏰ <strong>Start early!</strong> Most CJ internships require background checks — contact sites 3–6 months in advance. Federal agencies: plan 1 year ahead. Domestic violence agencies: plan for a 40-hour summer training.</div>
+        <p style="font-size:13px;margin-bottom:8px;"><strong>CRJU 495 — CJ Internship:</strong> General CJ agencies and nonprofits. Contact Dr. Christie Gardiner (<a href="mailto:cgardiner@fullerton.edu">cgardiner@fullerton.edu</a>; GH-530).</p>
+        <p style="font-size:13px;margin-bottom:12px;"><strong>CRJU 492 — Pre-law Externship:</strong> Legal field internships for those considering law school. Contact Dr. Rob Castro (<a href="mailto:rcastro@fullerton.edu">rcastro@fullerton.edu</a>; GH-544).</p>
+        <div style="font-size:13px;font-weight:600;margin-bottom:6px;color:var(--blue);">Past internship sites include:</div>
+        <div style="font-size:12px;color:var(--muted);columns:2;gap:12px;line-height:1.9;">
+          CSUF University Police · OC Juvenile Hall · OC Probation · OC Sheriff · OC Superior Court · OC Coroner · LA Probation · LA Medical Examiner · LAPD · LA Sheriff · San Bernardino Probation · Riverside Sheriff · Anaheim PD · Long Beach PD · Irvine PD · Huntington Beach PD · Premier Group International · Waymakers · OneOC · 2nd Call · FaCT · StandUp for Kids · Higher Ground · Crittenton Services · CASA OC · Olive Crest · ATF · CIA · CBP · DEA · DHS · FBI · Secret Service · U.S. Marshals · U.S. Capitol Police · Coast Guard Investigative Service · U.S. Defense Criminal Investigative Service · U.S. Office of Special Investigations · U.S. Probation &amp; Pretrial Services · U.S. Park Police
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">🏛️ Special Programs</div>
+        <p style="font-size:13px;margin-bottom:8px;"><strong>Moot Court:</strong> CSUF's team is consistently nationally ranked. Sharpen legal writing, oral advocacy, and critical thinking. Especially valuable for pre-law. Contact Dr. Pam Fiber-Ostrow (<a href="mailto:pfiber@fullerton.edu">pfiber@fullerton.edu</a>; GH-532).</p>
+        <p style="font-size:13px;margin-bottom:8px;"><strong>Intelligence Community Scholars Program:</strong> Prepares students for national security/intelligence careers through advanced study, mentoring, and networking. Minimum 3.2 GPA, rolling applications. Contact Dr. Valerie O'Regan (<a href="mailto:voregan@fullerton.edu">voregan@fullerton.edu</a>).</p>
+        <p style="font-size:13px;margin-bottom:8px;"><strong>Cal State D.C. Scholars:</strong> Earn credit while interning in Washington, D.C. Open to juniors, seniors, and grad students of all majors. Contact Amie Zeoli (<a href="mailto:amzeoli@fullerton.edu">amzeoli@fullerton.edu</a>) or visit <a href="http://hss.fullerton.edu/cal_state_dc/" target="_blank">hss.fullerton.edu/cal_state_dc/</a>.</p>
+        <p style="font-size:13px;"><strong>Study Abroad:</strong> CRJU students are highly encouraged to study abroad. Visit <a href="http://hss.fullerton.edu/Study_Abroad/study_abroad.aspx" target="_blank">HSS Study Abroad</a> or <a href="http://international.fullerton.edu/study-abroad" target="_blank">CSUF International</a>.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">🎖️ Student Organizations</div>
+        <p style="font-size:13px;margin-bottom:8px;"><strong>Alpha Phi Sigma (APS) — National CJ Honor Society:</strong> Requires 12+ CRJU units, 3.0 overall GPA, 3.2 major GPA. Holds speaker events every semester. Contact Dr. Veronica Herrera (<a href="mailto:veherrera@fullerton.edu">veherrera@fullerton.edu</a>; GH-527).</p>
+        <p style="font-size:13px;margin-bottom:8px;"><strong>CJSA — Criminal Justice Student Association:</strong> Open to all students interested in CJ. Networking, facility tours, forums, volunteer work. Contact Dr. Christie Gardiner (<a href="mailto:cgardiner@fullerton.edu">cgardiner@fullerton.edu</a>; GH-530).</p>
+        <p style="font-size:13px;"><strong>CSUF Pre-Law Society:</strong> Law school prep, peer networks, faculty connections. Contact Dr. Rob Castro (<a href="mailto:rcastro@fullerton.edu">rcastro@fullerton.edu</a>; UH-544).</p>
+      </div>
+      <div class="card">
+        <div class="card-title">💰 Scholarships &amp; Awards</div>
+        <p style="font-size:13px;margin-bottom:8px;">Department awards (applications due in spring): Outstanding Student Leadership &amp; Activities Award · Academic Excellence Award · Hobbs-Dery Award (law-related excellence) · Rose Sullivan &amp; Rebecca Morales Memorial Scholarship ($500 each, for adult re-entry students) · Alumnus of the Year Award.</p>
+        <p style="font-size:13px;margin-bottom:8px;"><strong>CSUF Scholarships:</strong> Nearly $2 million annually. Most HSS scholarships due in early February. <a href="http://www.fullerton.edu/financialaid/general/scholarships.php" target="_blank">Full details here</a>.</p>
+        <p style="font-size:13px;"><strong>McNair Scholars Program:</strong> For first-generation and underrepresented students interested in doctoral study. Must have 59+ units and 3.0 GPA. <a href="http://www.fullerton.edu/mcnair/" target="_blank">fullerton.edu/mcnair</a>.</p>
+      </div>
+    </section>
+
+    <!-- CONTACTS -->
+    <section class="panel" id="panel-contacts">
+      <h2 class="page-title">Contacts &amp; Campus Resources</h2>
+      <p class="page-sub">All numbers are in the 657-278 exchange unless noted.</p>
+      <div class="card">
+        <div class="card-title">📍 Department &amp; Advising</div>
+        <div class="contact-row"><div><div class="contact-label">PAJ Division Office</div><div class="contact-detail">(657) 278-3521 — GH 511 | <a href="mailto:pajdiv@fullerton.edu">pajdiv@fullerton.edu</a> | <a href="https://hss.fullerton.edu/paj/" target="_blank">hss.fullerton.edu/paj/</a></div></div></div>
+        <div class="contact-row"><div><div class="contact-label">Chair — Dr. Sarah Hill</div><div class="contact-detail">(657) 278-8460 — GH 510</div></div></div>
+        <div class="contact-row"><div><div class="contact-label">Associate Chair — Dr. Alissa R. Ackerman</div><div class="contact-detail">(657) 278-2272 — GH 536 | <a href="mailto:aackerman@fullerton.edu">aackerman@fullerton.edu</a></div></div></div>
+        <div class="contact-row"><div><div class="contact-label">Admin Support Coordinator — Destenee Thomas</div><div class="contact-detail">(657) 278-3523 — GH-512</div></div></div>
+        <div class="contact-row"><div><div class="contact-label">Admin Support Assistant — Amber Cabrera</div><div class="contact-detail">(657) 278-3419 — GH-511</div></div></div>
+        <div class="contact-row"><div><div class="contact-label">Admin Support Assistant — Lynda Banuelos</div><div class="contact-detail">(657) 278-4830 — GH-511</div></div></div>
+        <div class="contact-row"><div><div class="contact-label">CRJU Advising</div><div class="contact-detail">(657) 278-3521 — GH-211A | <a href="https://paj.fullerton.edu/criminaljustice/advising/cj-advising.html" target="_blank">Walk-in hours</a></div></div></div>
+        <div class="contact-row"><div><div class="contact-label">Internship Coordinator — Dr. Christie Gardiner</div><div class="contact-detail">(657) 278-3608 — GH 530 | <a href="mailto:cgardiner@fullerton.edu">cgardiner@fullerton.edu</a></div></div></div>
+        <div class="contact-row"><div><div class="contact-label">Pre-Law Advising — Dr. Rob Castro</div><div class="contact-detail">(657) 278-2571 — GH 544 | <a href="mailto:rcastro@fullerton.edu">rcastro@fullerton.edu</a></div></div></div>
+        <div class="contact-row"><div><div class="contact-label">College Advisors — Nallely Pratz &amp; Britt March</div><div class="contact-detail">(657) 278-5929 — GH-211A</div></div></div>
+        <div class="contact-row"><div><div class="contact-label">Graduation Specialist — Sean Taitt</div><div class="contact-detail">(657) 278-2594 — H-112 | <a href="mailto:hssuccessteam@fullerton.edu">hssuccessteam@fullerton.edu</a></div></div></div>
+        <div class="contact-row"><div><div class="contact-label">Director of HSS Academic Advising — Brittney Swanson</div><div class="contact-detail">(657) 278-4084 — H-112 | <a href="mailto:bcswanson@fullerton.edu">bcswanson@fullerton.edu</a></div></div></div>
+      </div>
+      <div class="card">
+        <div class="card-title">🎓 Academic &amp; Campus Support</div>
+        <div class="contact-row"><div><div class="contact-label">Academic Advisement Center</div><div class="contact-detail">(657) 278-5308 — LH 208 | GE advising, undeclared majors</div></div></div>
+        <div class="contact-row"><div><div class="contact-label">Registration &amp; Records</div><div class="contact-detail">(657) 278-3836 — LH 805</div></div></div>
+        <div class="contact-row"><div><div class="contact-label">Career Center</div><div class="contact-detail">(657) 278-3121 — LH 208 | <a href="http://www.fullerton.edu/career" target="_blank">fullerton.edu/career</a></div></div></div>
+        <div class="contact-row"><div><div class="contact-label">Center for Internships &amp; Community Engagement</div><div class="contact-detail">(657) 278-3746 — LH-206 | <a href="http://www.fullerton.edu/cice/" target="_blank">fullerton.edu/cice/</a></div></div></div>
+        <div class="contact-row"><div><div class="contact-label">Writing Center</div><div class="contact-detail">(657) 278-3650 — PLN 100 | Free to all students</div></div></div>
+        <div class="contact-row"><div><div class="contact-label">University Learning Center</div><div class="contact-detail">(657) 278-3836 — MH 488</div></div></div>
+        <div class="contact-row"><div><div class="contact-label">Financial Aid</div><div class="contact-detail">(657) 278-3117 — GH 101</div></div></div>
+        <div class="contact-row"><div><div class="contact-label">Library</div><div class="contact-detail">(657) 278-3125 — GH 146</div></div></div>
+      </div>
+      <div class="card">
+        <div class="card-title">💛 Health, Wellness &amp; Community</div>
+        <div class="contact-row"><div><div class="contact-label">Counseling &amp; Psychological Services (CAPS)</div><div class="contact-detail">(657) 278-5850 — TSU-258</div></div></div>
+        <div class="contact-row"><div><div class="contact-label">Student Health Center</div><div class="contact-detail">(657) 278-7859 — LH-530</div></div></div>
+        <div class="contact-row"><div><div class="contact-label">Disability Support Services</div><div class="contact-detail">(657) 278-3040 — SHCC/TH</div></div></div>
+        <div class="contact-row"><div><div class="contact-label">Tuffy's Basic Needs (food, clothing, emergency aid)</div><div class="contact-detail">(657) 278-8398 — MH 525</div></div></div>
+        <div class="contact-row"><div><div class="contact-label">Project Rebound (formerly incarcerated students)</div><div class="contact-detail">(657) 278-2714 — PLN/PLS | <a href="https://www.fullerton.edu/rebound/" target="_blank">fullerton.edu/rebound/</a></div></div></div>
+        <div class="contact-row"><div><div class="contact-label">Veterans Resource Center</div><div class="contact-detail">(657) 278-7082 — PLN 200 | <a href="mailto:vss@fullerton.edu">vss@fullerton.edu</a></div></div></div>
+        <div class="contact-row"><div><div class="contact-label">African American Resource Center</div><div class="contact-detail">(657) 278-3230 — PLS 180, Rm 182 | <a href="mailto:aarc@fullerton.edu">aarc@fullerton.edu</a></div></div></div>
+        <div class="contact-row"><div><div class="contact-label">Asian Pacific American Resource Center</div><div class="contact-detail">(657) 278-3742 — PLS 180, Rm 187 | <a href="mailto:aparc@fullerton.edu">aparc@fullerton.edu</a></div></div></div>
+        <div class="contact-row"><div><div class="contact-label">Latinx Community Resource Center</div><div class="contact-detail">(657) 278-2537 — PLS 180, Rm 184 | <a href="mailto:crc@fullerton.edu">crc@fullerton.edu</a></div></div></div>
+        <div class="contact-row"><div><div class="contact-label">LGBT Queer Resource Center</div><div class="contact-detail">(657) 278-4218 — PLS 180, Rm 189 | <a href="mailto:lgbtq@fullerton.edu">lgbtq@fullerton.edu</a></div></div></div>
+        <div class="contact-row"><div><div class="contact-label">Titan Dreamers Resource Center</div><div class="contact-detail">(657) 278-3234 — PLN 203</div></div></div>
+        <div class="contact-row"><div><div class="contact-label">Adult Re-Entry &amp; Parenting Student Programs</div><div class="contact-detail">(657) 278-3928 — GH 205</div></div></div>
+      </div>
+      <div class="section-label">Quick Links</div>
+      <div style="display:flex;flex-direction:column;gap:8px;font-size:13px;">
+        <a href="https://paj.fullerton.edu/criminaljustice/major/" target="_blank">📋 CJ Major Requirements by Catalog Year</a>
+        <a href="https://docs.google.com/document/d/1ut0vbgFtBz0hmnh83wVZoRUkIlELQH993yXrqItHuY8/edit?usp=sharing" target="_blank">📋 Approved Related Fields Courses</a>
+        <a href="https://paj.fullerton.edu/criminaljustice/advising/cj-advising.html" target="_blank">🕐 Current Walk-In Advising Hours</a>
+        <a href="https://www.fullerton.edu/aac/resources/gpa_calculator.php" target="_blank">🧮 CSUF GPA Calculator</a>
+        <a href="http://records.fullerton.edu" target="_blank">🎓 Graduation Check — Records Office</a>
+        <a href="https://hss.fullerton.edu/student_success_team/probation.aspx" target="_blank">⚠️ Academic Notice / Probation Resources</a>
+        <a href="http://www.fullerton.edu/financialaid/general/scholarships.php" target="_blank">💰 CSUF Scholarships</a>
+        <a href="http://www.fullerton.edu/mcnair/" target="_blank">🔬 McNair Scholars Program</a>
+        <a href="http://hss.fullerton.edu/paj/Faculty/part_time_faculty.aspx" target="_blank">👤 Part-Time Faculty Contact Info</a>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="site-footer">
+  CSUF Department of Criminal Justice &mdash; Undergraduate Advising Handbook &mdash; Fall 2026<br>
+  Created by Dr. Christie Gardiner &bull; Updated Fall 2024 by Nallely Pratz, M.S. Ed &bull; Updated Summer 2026 by Dr. Alissa R. Ackerman &bull; Last revised 4/2026
+</footer>
+
+<script>
+function show(id) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  event.currentTarget.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  return false;
+}
+
+function toggleAcc(head) {
+  const body = head.nextElementSibling;
+  const wasOpen = body.classList.contains('open');
+  document.querySelectorAll('.acc-body').forEach(b => b.classList.remove('open'));
+  if(!wasOpen) body.classList.add('open');
+}
+
+const careers = {
+  enforce: {
+    title:'Law Enforcement & Investigation',
+    roles:['City/County Police Officer','Highway Patrol','Deputy Sheriff','Detective','Campus Police','Dispatcher','Environmental Conservation Officer','Military Officer','National Parks Police'],
+    courses:[['CRJU 315','Police and Society'],['CRJU 415','Policing the City'],['CRJU 433','Controlling Crime'],['CRJU 462','Crime Analysis'],['CRJU 385','Race, Inequality, and the CJS']],
+    minors:['Computer Science — computer forensics (CS-522)','Geography — GIS & crime mapping (H-420A)','Psychology — behavioral insight (H-830)','Foreign Language — advantage in federal hiring (H-835A)'],
+    tip:'Start internship applications 3–6 months early. Federal agencies (FBI, DHS, DEA) require up to a year of advance planning and strong grades.',
+    contact:'Dr. Christie Gardiner — cgardiner@fullerton.edu | CRJU 495 internship'
+  },
+  law: {
+    title:'Law & Courts',
+    roles:['Paralegal','Victim Advocate','Court Clerk','Mediator','Bailiff','Court Reporter','Court Administrator','Attorney (requires J.D.)','Judge (requires J.D.)','Lawyer (requires J.D.)'],
+    courses:[['CRJU 210','Concepts of Criminal Law'],['CRJU 402','The Criminal Court Experience'],['CRJU 471','Moot Court'],['CRJU 480','Courtroom Evidence'],['CRJU 484','Criminal Law: Substantive'],['CRJU 485','Search, Seizure & Interrogation I']],
+    minors:['Law, Politics, and Society — 18 units (GH-511)','Philosophy — highest national LSAT scores (H-311)','Communication Studies — oral advocacy (CP-420)'],
+    tip:'Take ENGL 365 (Legal Writing) for your writing requirement. Join the Pre-Law Society and Moot Court early — both matter on law school applications.',
+    contact:'Dr. Rob Castro — rcastro@fullerton.edu | Pre-law advising & CRJU 492'
+  },
+  corrections: {
+    title:'Corrections & Rehabilitation',
+    roles:['Correctional Officer','Probation Officer','Parole Officer','Juvenile Justice Counselor','Halfway House Manager','Corrections Facilities Manager','Warden','Substance Abuse Specialist','Vocational Counselor'],
+    courses:[['CRJU 325','Juvenile Justice Administration'],['CRJU 345','Complexities in Corrections'],['CRJU 410','Restorative Justice'],['CRJU 440','Correctional Rehabilitation']],
+    minors:['Psychology — 21 units (H-830)','Human Services — 21 units with fieldwork (EC-405)','Child & Adolescent Studies — 21 units (EC-503)'],
+    tip:'Internships with county probation and juvenile hall are strong résumé builders. OC and LA County both have active programs.',
+    contact:'Dr. Christie Gardiner — cgardiner@fullerton.edu | CRJU 495 internship'
+  },
+  forensics: {
+    title:'Forensic Science & CSI',
+    roles:['Crime Scene Investigator','Forensic Lab Analyst','Ballistics Specialist','Arson Specialist','Medical Examiner Investigator','Document Specialist'],
+    courses:[['CRJU 305','Introduction to Criminalistics'],['CRJU 340','Research Methodology'],['CRJU 462','Crime Analysis']],
+    minors:['Chemistry — 24 units, lab & instrumentation (MH-580)','Biology — 22–23 units (MH-282)','Anthropology — 21 units + Forensic Anthropology Certificate (MH-426)'],
+    tip:'The Forensic Anthropology Certificate (12 units: ANTH 343, 443, 444 + electives) is a distinctive credential. The Chemistry minor offers strong lab and instrumentation tracks.',
+    contact:'Anthropology dept. (MH-426) or Chemistry dept. (MH-580) for minor advising'
+  },
+  victims: {
+    title:'Victim Services & Advocacy',
+    roles:['Victim Advocate','Crisis Counselor','Non-Profit Advocate','Child Support Agency Worker','Social Worker (M.S.W. for licensed)','Child Protective Services','Domestic Violence Staff'],
+    courses:[['CRJU 327','Victims of Crime'],['CRJU 325','Juvenile Justice Administration'],['CRJU 370','Sex, Crime, and Culture'],['CRJU 410','Restorative Justice'],['CRJU 430','Women and Crime']],
+    minors:['Human Services — 21 units with fieldwork (EC-405)','Psychology — 21 units (H-830)','Child & Adolescent Studies — 21 units (EC-503)','Sociology — 21 units (CP-900)'],
+    tip:'Domestic violence internship agencies require a 40-hour volunteer training, usually held in summer. Plan accordingly.',
+    contact:'Dr. Alissa Ackerman — aackerman@fullerton.edu'
+  },
+  policy: {
+    title:'Policy, Research & Academia',
+    roles:['Crime Analyst (requires advanced study)','Policy Analyst','Research Coordinator','Non-Profit Director','Security Intelligence Analyst','Private Investigator','Criminologist (doctoral)','Professor (Ph.D. required)'],
+    courses:[['CRJU 340','Research Methodology'],['CRJU 405','Criminal Justice Policy'],['CRJU 462','Crime Analysis'],['CRJU 491','Applied Policy Research'],['CRJU 499','Independent Study with Faculty']],
+    minors:['Public Policy — 21 units (GH-511)','Sociology — 21 units (CP-900)','Geography — GIS focus, 18 units (H-420A)','Business Data Analytics — 21 units (SMGH-4113)'],
+    tip:'The McNair Scholars Program supports students aiming for doctoral study. Talk to faculty early about research opportunities listed on the CJ web page.',
+    contact:'Dr. Christie Gardiner — cgardiner@fullerton.edu | Dr. Sarah Hill — Chair'
+  },
+  federal: {
+    title:'Federal Agencies',
+    roles:['FBI Special Agent','CIA Analyst','DEA Special Agent','Secret Service Agent','U.S. Marshal','ATF Agent','Border Patrol Agent','Homeland Security Officer','Inspector General','IRS Criminal Investigator'],
+    courses:[['CRJU 360','Comparative & International CJ Systems'],['CRJU 385','Race, Inequality, and the CJS'],['CRJU 462','Crime Analysis'],['CRJU 474','Civil Liberties']],
+    minors:['Foreign Language — bilingualism is a major advantage (H-835A)','Computer Science — tech/cyber roles (CS-522)','Business Data Analytics — intelligence analysis (SMGH-4113)','IC Scholars Program — structured national security pathway'],
+    tip:'Federal agencies are highly competitive. Plan a full year ahead. Aim for a 3.0+ GPA. The IC Scholars Program (min. 3.2 GPA) provides mentoring and a structured pathway.',
+    contact:'IC Scholars Program: Dr. Valerie O\'Regan — voregan@fullerton.edu'
+  }
+};
+
+function pickCareer(key, btn) {
+  document.querySelectorAll('.career-pill').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  const d = careers[key];
+  document.getElementById('career-prompt').style.display = 'none';
+  const el = document.getElementById('career-detail');
+  el.style.display = 'block';
+  el.innerHTML = `
+    <div class="card">
+      <div class="card-title">🎯 ${d.title}</div>
+      <div style="margin-bottom:12px;">${d.roles.map(r=>`<span class="badge badge-gray">${r}</span>`).join('')}</div>
+      <div class="section-label" style="margin-top:0;">Key courses to prioritize</div>
+      ${d.courses.map(([code,name])=>`<div style="display:flex;gap:10px;padding:7px 0;border-bottom:1px solid var(--border);font-size:13px;"><span style="color:var(--light-blue);font-weight:700;min-width:80px;">${code}</span><span>${name}</span></div>`).join('')}
+    </div>
+    <div class="card">
+      <div class="card-title">➕ Recommended minors</div>
+      ${d.minors.map(m=>`<div style="font-size:13px;padding:7px 0;border-bottom:1px solid var(--border);">📌 ${m}</div>`).join('')}
+    </div>
+    <div class="alert alert-info">💡 <span>${d.tip}</span></div>
+    <p style="font-size:12px;color:var(--muted);margin-top:6px;">👤 Contact: ${d.contact}</p>
+  `;
+}
+
+// Course tracker
+const core = [
+  ['CRJU 101','Introduction to Criminal Justice',3],
+  ['CRJU 210','Concepts of Criminal Law',3],
+  ['CRJU 301','Mythology of Crime and Justice',3],
+  ['CRJU 330','Theories of Crime and Delinquency',3],
+  ['CRJU 340','CJ Research Methodology',3],
+  ['CRJU 385','Race, Inequality, and the CJS',3],
+];
+const breadth = [
+  ['CRJU 302','Introduction to Courts',3],
+  ['CRJU 315','Police and Society',3],
+  ['CRJU 345','Complexities in Corrections',3],
+];
+const electives = [
+  ['CRJU 305','Introduction to Criminalistics',3],
+  ['CRJU 320','Intro to Public Management & Policy',3],
+  ['CRJU 322','Leadership for Public Service',3],
+  ['CRJU 325','Juvenile Justice Administration',3],
+  ['CRJU 327','Victims of Crime',3],
+  ['CRJU 333','Indigenous Justice',3],
+  ['CRJU 355','White Collar Crime',3],
+  ['CRJU 360','Comparative & International CJ Systems',3],
+  ['CRJU 362','Immigration and Crime',3],
+  ['CRJU 370','Sex, Crime, and Culture',3],
+  ['CRJU 402','The Criminal Court Experience',3],
+  ['CRJU 404','Capital Punishment',3],
+  ['CRJU 405','Criminal Justice Policy',3],
+  ['CRJU 406','Crime & Popular Culture',3],
+  ['CRJU 410','Restorative Justice',3],
+  ['CRJU 415','Policing the City',3],
+  ['CRJU 417','Mass Murder',3],
+  ['CRJU 420','Drugs and Crime',3],
+  ['CRJU 422','Human Resource Management',3],
+  ['CRJU 430','Women and Crime',3],
+  ['CRJU 433','Controlling Crime',3],
+  ['CRJU 435','Civil Disobedience and Social Justice',3],
+  ['CRJU 440','Correctional Rehabilitation',3],
+  ['CRJU 455','Gangs & the Criminal Justice System',3],
+  ['CRJU 462','Crime Analysis',3],
+  ['CRJU 465','Law, Punishment and Justice',3],
+  ['CRJU 471','Moot Court',3],
+  ['CRJU 474','Civil Liberties',3],
+  ['CRJU 475T','Various Topics in Admin. of Justice',3],
+  ['CRJU 477','Mock Trial: Legal Practicum II',3],
+  ['CRJU 478','Animals, Law, & Society',3],
+  ['CRJU 480','Courtroom Evidence',3],
+  ['CRJU 484','Criminal Law: Substantive',3],
+  ['CRJU 485','Search, Seizure & Interrogation I',3],
+  ['CRJU 486','Search, Seizure & Interrogation II',3],
+  ['CRJU 491','Applied Policy Research',3],
+  ['CRJU 492','Pre-law Internship',3],
+  ['CRJU 495','Criminal Justice Internship',3],
+  ['CRJU 499','Independent Study (1–3 units)',3],
+];
+const writing = [
+  ['ENGL 301','Advanced College Writing',3],
+  ['ENGL 365','Legal Writing (recommended for pre-law)',3],
+];
+
+let checked = {};
+try { checked = JSON.parse(localStorage.getItem('crju_checked_final') || '{}'); } catch(e){}
+const TOTAL = 54;
+
+function renderList(containerId, courses) {
+  const el = document.getElementById(containerId);
+  if(!el) return;
+  el.innerHTML = '';
+  courses.forEach(([code,name,units]) => {
+    const id = code.replace(/[\s\/]/g,'_');
+    const done = !!checked[id];
+    const row = document.createElement('div');
+    row.className = 'course-row'+(done?' done':'');
+    row.id = 'row_'+id;
+    row.onclick = () => toggle(id, row);
+    row.innerHTML = `<input type="checkbox" ${done?'checked':''} id="cb_${id}" onclick="event.stopPropagation();toggle('${id}',document.getElementById('row_${id}'))"><span class="c-code">${code}</span><span class="c-name">${name}</span><span class="c-units">${units}u</span>`;
+    el.appendChild(row);
+  });
+}
+
+function toggle(id, row) {
+  checked[id] = !checked[id];
+  const cb = document.getElementById('cb_'+id);
+  if(cb) cb.checked = checked[id];
+  row.className = 'course-row'+(checked[id]?' done':'');
+  try { localStorage.setItem('crju_checked_final', JSON.stringify(checked)); } catch(e){}
+  updateProgress();
+}
+
+function updateProgress() {
+  const done = Object.values(checked).filter(Boolean).length * 3;
+  const pct = Math.min(100, Math.round(done/TOTAL*100));
+  document.getElementById('t-done').textContent = done;
+  document.getElementById('t-left').textContent = Math.max(0, TOTAL-done);
+  document.getElementById('t-pct').textContent = pct+'%';
+  document.getElementById('t-bar').style.width = pct+'%';
+}
+
+renderList('core-courses', core);
+renderList('breadth-courses', breadth);
+renderList('elective-courses', electives);
+renderList('writing-courses', writing);
+updateProgress();
+
+// Path planner
+const planState = {};
+
+function pickOpt(key, val, btn) {
+  planState[key] = val;
+  btn.closest('.plan-step').querySelectorAll('.opt-btn').forEach(b => {
+    b.classList.remove('sel');
+    b.querySelector('.opt-check').textContent = '';
+  });
+  btn.classList.add('sel');
+  btn.querySelector('.opt-check').textContent = '✓';
+
+  if(key === 'entry') {
+    const s1 = document.getElementById('ps-1');
+    s1.classList.remove('plan-step-hidden');
+    const fresh = val === 'freshman';
+    s1.querySelector('#ps-1-opts').innerHTML = (fresh
+      ? [['4','4 years (30+ units/year)'],['5','5 years (24+ units/year)']]
+      : [['2','2 years (30+ units/year)'],['3','3 years (24+ units/year)']]
+    ).map(([v,label]) => `<button class="opt-btn" onclick="pickOpt('years','${v}',this)"><span class="opt-check"></span> ${label}</button>`).join('');
+  }
+  if(key === 'years') {
+    document.getElementById('ps-2').classList.remove('plan-step-hidden');
+  }
+  if(key === 'hours') {
+    const maxU = {'0-9':'14–16','10-19':'13–14','20-29':'9–12','30-39':'6–9'}[val];
+    const maps = {
+      f4: {
+        heads:['Year 1 Fall','Year 1 Spring','Year 2 Fall','Year 2 Spring','Year 3 Fall','Year 3 Spring','Year 4 Fall','Year 4 Spring'],
+        rows:[
+          ['GE Area 1B or 1C','GE Area 1A, 1B, or 1C','GE Area 1A, 1B, or 1C','GE Area 2U/5U','CRJU 385 (GE Area Z)','Major Breadth (302/315/345)','CRJU Elective 400-lvl','CRJU Elective 400-lvl'],
+          ['GE Area 2A','GE Area 5A or 5B/5C','GE Area 5A or 5B/5C','GE Area 3U','CRJU 330 (Major Req)','CRJU Elective 300-lvl','CRJU Elective 300-lvl','CRJU Elective 400-lvl'],
+          ['GE Area 3A or 3B','GE Area 3A or 3B','POSC 100 (Grad Req)','GE Area 4U','CRJU 340 (Major Req)','Related Fields Course','Related Fields Course','Related Fields Course'],
+          ['GE Area 4A or 4B','GE Area 4A or 4B','CRJU 210 (Major Req)','CRJU 301 (Major Req)','Major Breadth (302/315/345)','Related Fields Course','Free Elective','Free Elective'],
+          ['CRJU 101 (Major Req)','GE Area 6','Free Elective','ENGL 301 or ENGL 365','Free Elective','Free Elective','Free Elective','Free Elective'],
+          ['15 units','15–16 units','15–16 units','15 units','15 units','15 units','15 units','15 units'],
+        ]
+      },
+      f5: {
+        heads:['Yr1 Fall','Yr1 Spring','Yr2 Fall','Yr2 Spring','Yr3 Fall','Yr3 Spring','Yr4 Fall','Yr4 Spring','Yr5 Fall','Yr5 Spring'],
+        rows:[
+          ['GE 1B/1C','GE 1A/1B/1C','GE 1A/1B/1C','GE Area 6','GE Area 2U/5U','ENGL 301 or 365','CRJU 330','CRJU Elective 300-lvl','CRJU Elective 400-lvl','CRJU Elective 400-lvl'],
+          ['GE Area 2A','GE 5A/5B/5C','GE 5A/5B/5C','POSC 100','GE Area 3U','CRJU 385 (GE Area Z)','CRJU 340','CRJU Elective 300-lvl','CRJU Elective 400-lvl','Free Elective'],
+          ['GE 3A or 3B','GE 3A or 3B','GE 4A or 4B','GE 4A or 4B','GE Area 4U','CRJU 301','Major Breadth','Related Fields','Related Fields','Related Fields'],
+          ['Free Elective','CRJU 101','CRJU 210','Free Elective','Free Elective','Major Breadth','Free Elective','Related Fields','Free Elective','Free Elective'],
+          ['12 units','12–13 units','12–13 units','12 units','12 units','12 units','12 units','12 units','12 units','12 units'],
+        ]
+      },
+      t2: {
+        heads:['Year 1 Fall','Year 1 Spring','Year 2 Fall','Year 2 Spring'],
+        rows:[
+          ['CRJU 101* (or Free Elective)','GE Area 4U / CRJU Elective 300-lvl','CRJU 330 (Major Req)','CRJU Elective 300-lvl'],
+          ['CRJU 210** (or Free Elective)','Related Fields Elective','CRJU 340 (Major Req)','CRJU Elective 400-lvl'],
+          ['ENGL 301 or ENGL 365','Related Fields Elective','Major Breadth (302/315/345)','CRJU Elective 400-lvl'],
+          ['GE Area 2U/5U','CRJU 301 (Major Req)','Major Breadth (302/315/345)','CRJU Elective 400-lvl'],
+          ['GE Area 3U','CRJU 385 (GE Area Z)','Related Fields Course','Related Fields Course'],
+          ['15 units','15 units','15 units','15 units'],
+        ]
+      },
+      t3: {
+        heads:['Year 1 Fall','Year 1 Spring','Year 2 Fall','Year 2 Spring','Year 3 Fall','Year 3 Spring'],
+        rows:[
+          ['CRJU 101* (or Free Elective)','CRJU 301 (Major Req)','CRJU 330 (Major Req)','Major Breadth (302/315/345)','CRJU Elective 400-lvl','CRJU Elective 400-lvl'],
+          ['CRJU 210** (or Free Elective)','CRJU 385 (GE Area Z)','CRJU 340 (Major Req)','Related Fields Course','CRJU Elective 400-lvl','Related Fields Course'],
+          ['ENGL 301 or ENGL 365','GE Area 4U / CRJU Elective 300-lvl','Major Breadth (302/315/345)','CRJU Elective 300-lvl','Related Fields Course','Free Elective'],
+          ['GE Area 3U','GE Area 2U/5U','Free Elective','Related Fields Course','CRJU Elective 300-lvl','Free Elective'],
+          ['12 units','12 units','12 units','12 units','12 units','12 units'],
+        ]
+      }
+    };
+    const key2 = (planState.entry==='freshman'?'f':'t')+planState.years;
+    const m = maps[key2]||maps.f4;
+    const colW = Math.floor(100/m.heads.length);
+    document.getElementById('plan-result').innerHTML = `
+      <div class="alert alert-success" style="margin-top:8px;">✅ Recommended load: <strong>${maxU} units/semester</strong> given your outside commitments. Remember: max 18 units/semester (petition to exceed). Consult your advisor regularly.</div>
+      <div style="overflow-x:auto;margin-top:12px;">
+        <table class="rm-table" style="min-width:500px;">
+          <tr>${m.heads.map(h=>`<th class="yr-h" style="width:${colW}%;">${h}</th>`).join('')}</tr>
+          ${m.rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}
+        </table>
+      </div>
+      <p style="font-size:12px;color:var(--muted);margin-top:8px;">* Take CRJU 101 only if you have not completed an equivalent Intro to CJ course at CC.<br>** Take CRJU 210 only if you have not completed an equivalent Concepts of Criminal Law course at CC.<br>This is a sample only — bring your Titan Degree Audit to every advising session.</p>
+    `;
+  }
+}
+</script>
+</body>
+</html>
