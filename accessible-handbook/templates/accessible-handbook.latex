@@ -1,0 +1,132 @@
+% Derived from ../../accessible_handouts/accessible-handout.latex.
+% Handbook additions: TOC rendering and Pandoc 3.10 long-table support.
+\DocumentMetadata{
+  pdfstandard=UA-1,
+  pdfversion=1.7,
+  tagging=on,
+  lang=$if(lang)$$lang$$else$en-US$endif$
+}
+
+\documentclass[12pt]{article}
+
+\usepackage[$if(babel-lang)$$babel-lang$$else$american$endif$]{babel}
+
+% ================================
+% FONT SETTINGS
+% ================================
+\usepackage{fontspec}
+\IfFontExistsTF{TeX Gyre Heros}{
+  \setmainfont{TeX Gyre Heros}
+}{
+  \setmainfont{Latin Modern Sans}
+}
+\IfFontExistsTF{TeX Gyre Cursor}{
+  \setmonofont{TeX Gyre Cursor}
+}{
+  \setmonofont{Latin Modern Mono}
+}
+
+% Page layout and spacing
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{pdflscape}
+\usepackage{setspace}
+\onehalfspacing
+
+% Section and paragraph formatting
+\setcounter{secnumdepth}{0}
+\usepackage{titlesec}
+\titleformat{\section}[block]{\large\bfseries}{}{0em}{}
+\titleformat{\subsection}[block]{\normalsize\bfseries}{}{0em}{}
+\titleformat{\subsubsection}[block]{\normalsize\itshape}{}{0em}{}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5\baselineskip}
+
+% Lists, tables, graphics
+\usepackage{enumitem}
+\setlist[itemize]{itemsep=0pt, parsep=0pt, topsep=0.25\baselineskip}
+\newlist{flatlist}{itemize}{1}
+\setlist[flatlist]{label={}, leftmargin=0pt, itemsep=0pt, parsep=0pt, topsep=0pt}
+\setlistdepth{3}
+\usepackage{graphicx}
+\usepackage{array, longtable, booktabs}
+\usepackage{calc}
+% Pandoc 3.10 uses LTcaptype=none for uncaptioned long tables. The caption
+% machinery expects a matching counter even though it is never displayed.
+\newcounter{none}
+\usepackage{caption}
+\usepackage{tabularray}
+\UseTblrLibrary{booktabs}
+
+% Tagging for accessibility
+\IfFileExists{tagpdf-base.sty}{
+  \usepackage{tagpdf}
+  \tagpdfsetup{activate-all=true, interwordspace=true}
+}{
+  \newcommand\tagpdfsetup[1]{}
+}
+
+% Page numbers only
+\pagestyle{plain}
+
+% Links and metadata
+\usepackage{hyperref}
+\usepackage{bookmark}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=magenta,
+  urlcolor=blue,
+  unicode=true,
+  pdfdisplaydoctitle=true,
+$if(title)$  pdftitle={$title$},$endif$%
+$if(author)$  pdfauthor={$for(author)$$author$$sep$, $endfor$},$endif$%
+$if(course-code)$  pdfsubject={$course-code$$if(course-title)$ -- $course-title$$endif$},$endif$%
+$if(keywords)$  pdfkeywords={$for(keywords)$$keywords$$sep$, $endfor$},$else$  pdfkeywords={Accessible Handout, Course Materials},$endif$
+  pdfborderstyle={/S/U/W 1}
+}
+\urlstyle{same}
+
+% Bibliography (optional)
+$if(natbib)$\usepackage[round]{natbib}$endif$
+
+% Pandoc compatibility
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+% Document title block
+$if(title)$\title{$title$$if(course-code)$\\\large $course-code$$if(course-title)$ -- $course-title$$endif$$endif$}$endif$
+$if(author)$\author{$for(author)$$author$$sep$ \and $endfor$}$endif$
+$if(date)$\date{$date$}$endif$
+
+\begin{document}
+$if(title)$\maketitle$endif$
+
+$if(logo)$
+\begin{center}
+\includegraphics[width=2.25in, alt={$if(logo-alt)$$logo-alt$$else$Institution logo$endif$}]{$logo$}
+\end{center}
+$endif$
+
+$if(toc)$
+$if(toc-title)$
+\renewcommand*\contentsname{$toc-title$}
+$endif$
+\setcounter{tocdepth}{$toc-depth$}
+\tableofcontents
+\clearpage
+$endif$
+
+$body$
+
+$if(natbib)$
+$if(bibliography)$
+\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+$endif$
+$endif$
+
+\end{document}
