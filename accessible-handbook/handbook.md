@@ -362,7 +362,7 @@ I.  Upper Division Writing (3 units; choose one below)
 +-------------------------------------+----------------------------------------------------------------+-------------------------------------+-------------------------------------+----------------+
 | CRJU 305                            | Introduction to Criminalistics                                 | **\_\_\_\_\_\_\_\_\_\_\_\_**        | **\_\_\_\_\_\_\_\_\_\_\_\_**        |                |
 +-------------------------------------+----------------------------------------------------------------+-------------------------------------+-------------------------------------+----------------+
-| CRJU 320                            | Intro to Public Management and Policy                          | **\_\_\_\_\_\_\_\_\_\_\_\_**        | **\_\_\_\_\_\_\_\_\_\_\_\_**        |                |
+| CRJU 320                            | Introduction to Public Administration                          | **\_\_\_\_\_\_\_\_\_\_\_\_**        | **\_\_\_\_\_\_\_\_\_\_\_\_**        |                |
 +-------------------------------------+----------------------------------------------------------------+-------------------------------------+-------------------------------------+----------------+
 | CRJU 322                            | Leadership for Public Service                                  | **\_\_\_\_\_\_\_\_\_\_\_\_**        | **\_\_\_\_\_\_\_\_\_\_\_\_**        |                |
 +-------------------------------------+----------------------------------------------------------------+-------------------------------------+-------------------------------------+----------------+
@@ -1285,6 +1285,14 @@ Office: GH 520 Phone: (657) 278-8249 <gspiropoulos@fullerton.edu>
 
 **PAJ FACULTY WHO TEACH CROSS-LISTED COURSES**
 
+**ADAMS, David P.** \*(2016) Associate Professor of Public Administration; Ph.D., Auburn University
+
+Teaches: CRJU320-Introduction to Public Administration
+
+Research Interests: Public policy; Public administration; Environmental policy; Collaborative governance; American political institutions
+
+Office: TBD Phone: (657) 278-4770 <dpadams@fullerton.edu>
+
 **CASTRO, Rob** \*(2002) Professor; Ph.D., University of Michigan, Ann Arbor; J.D., UCLA Law School
 
 Teaches: CRJU492-Pre-Law Internship
@@ -1295,7 +1303,7 @@ Office: GH 544 Phone: (657) 278-2571 <rcastro@fullerton.edu>
 
 **DOUCETTE, Meriem** \*(2015) Associate Professor of Public Administration; Ph.D., University of Georgia
 
-Teaches: CRJU320-Intro. to Public Management & Policy
+Teaches: CRJU320-Introduction to Public Administration
 
 Research Interests: Organizational Theory and Behavior, Leadership, Education Policy, Behavioral Economics, and Labor Economics
 
@@ -1327,7 +1335,7 @@ Office: GH 546 Phone: (657) 278-3653 <rorobinson@fullerton.edu>
 
 **STONE, Samuel** \*(2011) Professor of Public Administration; Ph.D., Indiana University
 
-Teaches: CRJU320-Intro. to Public Management & Policy
+Teaches: CRJU320-Introduction to Public Administration
 
 Research Interests: Public Finance and Public Management
 
