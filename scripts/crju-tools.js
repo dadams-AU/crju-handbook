@@ -153,13 +153,13 @@ const trackerCourses = {
         ['CRJU 385', 'Race, Inequality, and the CJS', 3]
     ],
     breadth: [
-        ['CRJU 302', 'Introduction to Courts', 3],
+        ['CRJU 302', 'Introduction to Criminal Courts', 3],
         ['CRJU 315', 'Police and Society', 3],
-        ['CRJU 345', 'Complexities in Corrections', 3]
+        ['CRJU 345', 'Corrections', 3]
     ],
     electives: [
         ['CRJU 305', 'Introduction to Criminalistics', 3],
-        ['CRJU 320', 'Intro to Public Management & Policy', 3],
+        ['CRJU 320', 'Introduction to Public Administration', 3],
         ['CRJU 322', 'Leadership for Public Service', 3],
         ['CRJU 325', 'Juvenile Justice Administration', 3],
         ['CRJU 327', 'Victims of Crime', 3],
@@ -178,7 +178,7 @@ const trackerCourses = {
         ['CRJU 420', 'Drugs and Crime', 3],
         ['CRJU 422', 'Human Resource Management', 3],
         ['CRJU 430', 'Women and Crime', 3],
-        ['CRJU 433', 'Controlling Crime', 3],
+        ['CRJU 433', 'Controlling Crime', 3], ['CRJU 434', 'Cutting Edge Criminology: New Theories and Methods', 3],
         ['CRJU 435', 'Civil Disobedience and Social Justice', 3],
         ['CRJU 440', 'Correctional Rehabilitation', 3],
         ['CRJU 455', 'Gangs & the Criminal Justice System', 3],
@@ -192,7 +192,7 @@ const trackerCourses = {
         ['CRJU 480', 'Courtroom Evidence', 3],
         ['CRJU 484', 'Criminal Law: Substantive', 3],
         ['CRJU 485', 'Search, Seizure & Interrogation I', 3],
-        ['CRJU 486', 'Search, Seizure & Interrogation II', 3],
+        ['CRJU 486', 'Search, Seizure & Interrogation II', 3], ['CRJU 487', 'Technology and Criminal Justice Rights', 3],
         ['CRJU 491', 'Applied Policy Research', 3],
         ['CRJU 492', 'Pre-law Internship', 3],
         ['CRJU 495', 'Criminal Justice Internship', 3],
