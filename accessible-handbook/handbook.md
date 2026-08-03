@@ -1291,7 +1291,7 @@ Teaches: CRJU320-Introduction to Public Administration
 
 Research Interests: Public policy; Public administration; Environmental policy; Collaborative governance; American political institutions
 
-Office: TBD Phone: (657) 278-4770 <dpadams@fullerton.edu>
+Office: GH 516 Phone: (657) 278-4770 <dpadams@fullerton.edu>
 
 **CASTRO, Rob** \*(2002) Professor; Ph.D., University of Michigan, Ann Arbor; J.D., UCLA Law School
 
