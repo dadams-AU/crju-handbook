@@ -303,7 +303,7 @@ prerequisites for upper-division electives you may be interested in.
 
 **CRJU 315** Police and Society
 
-**CRJU 345** Complexities in Corrections
+**CRJU 345** Corrections
 
 ## Upper Division CJ Electives (15 units; 9 of which must be 400-level)
 
@@ -354,7 +354,7 @@ I.  Upper Division Writing (3 units; choose one below)
 +-------------------------------------+----------------------------------------------------------------+-------------------------------------+-------------------------------------+----------------+
 | CRJU 315                            | Police and Society                                             | **\_\_\_\_\_\_\_\_\_\_\_\_**        | **\_\_\_\_\_\_\_\_\_\_\_\_**        |                |
 +-------------------------------------+----------------------------------------------------------------+-------------------------------------+-------------------------------------+----------------+
-| CRJU 345                            | Complexities in Corrections                                    | **\_\_\_\_\_\_\_\_\_\_\_\_**        | **\_\_\_\_\_\_\_\_\_\_\_\_**        |                |
+| CRJU 345                            | Corrections                                    | **\_\_\_\_\_\_\_\_\_\_\_\_**        | **\_\_\_\_\_\_\_\_\_\_\_\_**        |                |
 +-------------------------------------+----------------------------------------------------------------+-------------------------------------+-------------------------------------+----------------+
 |                                     |                                                                |                                     |                                     |                |
 +-------------------------------------+----------------------------------------------------------------+-------------------------------------+-------------------------------------+----------------+
@@ -1007,7 +1007,7 @@ Options: Chinese, Japanese, Vietnamese, Spanish, French
 
 **Undergraduate Research with Faculty (CRJU 499; 1-3 units) --** Independent Studies are intended for (1) students who are interested in pursuing their own research, under faculty supervision or (2) students working with faculty on a faculty research project. Students can take 1-3 units of independent study per semester, up to 6 units of independent study as part of their degree. Student-faculty collaborations are created by mutual interest. If you are interested in the research process and independent study, talk to your favorite professor about the possibility. The faculty roster near the end of this handbook briefly summarizes faculty research interests but you can also learn about individual faculty research interests on the Criminal Justice web page.
 
-**Applied Policy Research (CRJU 491; 3 units)** -- This course is designed for students who are interested in research but not sure whether they are ready for an independent study. Students in the course conduct independent research in small groups, under faculty supervision, on important policy-relevant questions proposed by members of the public, leaders of government or non-profit agencies, or politicians in our community. The class is by "permit only" and offered every 2-3 years. If you are interested in this course, talk to PAJ Division Chair Dr. Phil Kopp (<mjarvis@fullerton.edu>, GH-510) or, Dr. Christie Gardiner (<cgardiner@fullerton.edu>, GH-530).
+**Applied Policy Research (CRJU 491; 3 units)** -- This course is designed for students who are interested in research but not sure whether they are ready for an independent study. Students in the course conduct independent research in small groups, under faculty supervision, on important policy-relevant questions proposed by members of the public, leaders of government or non-profit agencies, or politicians in our community. The class is by "permit only" and offered every 2-3 years. If you are interested in this course, talk to PAJ Division Chair Dr. Sarah Hill (<shill@fullerton.edu>, GH-510) or, Dr. Christie Gardiner (<cgardiner@fullerton.edu>, GH-530).
 
 ## Experiential Classes and Programs
 
@@ -1177,7 +1177,7 @@ Applications are accepted on a rolling basis. A minimum GPA of 3.2 is required. 
 
 **ACKERMAN, Alissa R.** \*(2017) Professor; Ph.D., CUNY, John Jay College of Criminal Justice
 
-Teaches: CRJU101-Introduction to Criminal Justice; CRJU 301-Mythology of Crime and Justice; CRJU340-Research Methods; CRJU345-Complexities in Corrections; CRJU370-Sex, Crime, and Culture; CRJU 410 Restorative Justice
+Teaches: CRJU101-Introduction to Criminal Justice; CRJU 301-Mythology of Crime and Justice; CRJU340-Research Methods; CRJU345-Corrections; CRJU370-Sex, Crime, and Culture; CRJU 410 Restorative Justice
 
 Research Interests: Sex crimes policy and management, Sexual violence prevention, Restorative and transformative justice with people impacted by sexual harm; Impacts of sexual violence
 
@@ -1231,7 +1231,7 @@ Office: GH 533 Phone: (657) 278-7650 <pkopp@fullerton.edu>
 
 **LASLEY, Jim** \*(1986) Professor; Ph.D., Claremont Graduate School
 
-Teaches: CRJU101- Introduction to Criminal Justice; CRJU330-Theories of Crime and Delinquency; CRJU345-Complexities in Corrections
+Teaches: CRJU101- Introduction to Criminal Justice; CRJU330-Theories of Crime and Delinquency; CRJU345-Corrections
 
 Research Interests: Research Methods, Investigation, Situational Crime Prevention
 
@@ -1247,7 +1247,7 @@ Office: GH 539 Phone: (657) 278-2290 <jlovell@fullerton.edu>
 
 **MALLICOAT, Stacy** \*(2003) Professor; Ph.D., University of Colorado, Boulder
 
-Teaches: CRJU101-Introduction to Criminal Justice; CRJU301-Mythology of Crime and Justice; CRJU345-Complexities in Corrections; CRJU404-Capital Punishment; CRJU430-Women & Crime
+Teaches: CRJU101-Introduction to Criminal Justice; CRJU301-Mythology of Crime and Justice; CRJU345-Corrections; CRJU404-Capital Punishment; CRJU430-Women & Crime
 
 Research Interests: Feminist criminology, Capital Punishment, Criminal Justice Policy, Evaluation research, Student Success, Pedagogy
 
@@ -1263,7 +1263,7 @@ Office: 527 Phone: TBD <xmendez@fullerton.edu>
 
 **PARK, Jihye** \*(2024) Assistant Professor; Ph.D., University of Iowa
 
-Teaches: CRJU345-Complexities in Corrections; CRJU362-Immigration and Crime
+Teaches: CRJU345-Corrections; CRJU362-Immigration and Crime
 
 Research Interests: Criminology & Inequality, Sociology of Punishment, Social Control on Immigrants, Private Prisons, Communities and Crime, Gender and Crime
 
@@ -1273,7 +1273,7 @@ Office: GH 543 Phone: 657-278-8688 <jihpark@fullerton.edu>
 
 **SPIROPOULOS, Georgia** \*(2006) Associate Professor; Ph.D., University of Cincinnati
 
-Teaches: CRJU340-Research Methods; CRJU345-Complexities in Corrections; CRJU417-Mass Murder
+Teaches: CRJU340-Research Methods; CRJU345-Corrections; CRJU417-Mass Murder
 
 Research Interests: Correctional rehabilitation and offender risk assessment, multiple (mass) murder and school and campus violence
 
