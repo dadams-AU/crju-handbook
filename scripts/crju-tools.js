@@ -155,7 +155,7 @@ const trackerCourses = {
     breadth: [
         ['CRJU 302', 'Introduction to Criminal Courts', 3],
         ['CRJU 315', 'Police and Society', 3],
-        ['CRJU 345', 'Corrections', 3]
+        ['CRJU 345', 'Complexities in Corrections', 3]
     ],
     electives: [
         ['CRJU 305', 'Introduction to Criminalistics', 3],
