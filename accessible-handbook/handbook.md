@@ -1023,7 +1023,7 @@ Options: Chinese, Japanese, Vietnamese, Spanish, French
 
 - **CRJU 495 --Internship in Criminal Justice** -- General career internships in criminal justice agencies and the non-profit sector. For more information, contact Dr. Christie Gardiner (<cgardiner@fullerton.edu>; GH-530)
 
-- **CRJU 492 -- Prelaw Externship/Internship** -- Internships and externships in the legal field, intended for those thinking about law school. For more information, contact Dr. Rob Castro (<rcastro@fullerton.edu>; GH-544)
+- **CRJU 492 -- Pre-law Internship** -- Internships and externships in the legal field, intended for those thinking about law school. For more information, contact Dr. Rob Castro (<rcastro@fullerton.edu>; GH-544)
 
 Recommendations if you want to do an internship:
 
@@ -1179,7 +1179,7 @@ Applications are accepted on a rolling basis. A minimum GPA of 3.2 is required. 
 
 **ACKERMAN, Alissa R.** \*(2017) Professor; Ph.D., CUNY, John Jay College of Criminal Justice
 
-Teaches: CRJU101-Introduction to Criminal Justice; CRJU 301-Mythology of Crime and Justice; CRJU340-Research Methods; CRJU345-Corrections; CRJU370-Sex, Crime, and Culture; CRJU 410 Restorative Justice
+Teaches: CRJU101-Introduction to Criminal Justice; CRJU 301-Mythology of Crime and Justice; CRJU340-Research Methods; CRJU345-Complexities in Corrections; CRJU370-Sex, Crime, and Culture; CRJU 410 Restorative Justice
 
 Research Interests: Sex crimes policy and management, Sexual violence prevention, Restorative and transformative justice with people impacted by sexual harm; Impacts of sexual violence
 
@@ -1233,7 +1233,7 @@ Office: GH 533 Phone: (657) 278-7650 <pkopp@fullerton.edu>
 
 **LASLEY, Jim** \*(1986) Professor; Ph.D., Claremont Graduate School
 
-Teaches: CRJU101- Introduction to Criminal Justice; CRJU330-Theories of Crime and Delinquency; CRJU345-Corrections
+Teaches: CRJU101- Introduction to Criminal Justice; CRJU330-Theories of Crime and Delinquency; CRJU345-Complexities in Corrections
 
 Research Interests: Research Methods, Investigation, Situational Crime Prevention
 
@@ -1249,7 +1249,7 @@ Office: GH 539 Phone: (657) 278-2290 <jlovell@fullerton.edu>
 
 **MALLICOAT, Stacy** \*(2003) Professor; Ph.D., University of Colorado, Boulder
 
-Teaches: CRJU101-Introduction to Criminal Justice; CRJU301-Mythology of Crime and Justice; CRJU345-Corrections; CRJU404-Capital Punishment; CRJU430-Women & Crime
+Teaches: CRJU101-Introduction to Criminal Justice; CRJU301-Mythology of Crime and Justice; CRJU345-Complexities in Corrections; CRJU404-Capital Punishment; CRJU430-Women & Crime
 
 Research Interests: Feminist criminology, Capital Punishment, Criminal Justice Policy, Evaluation research, Student Success, Pedagogy
 
@@ -1265,7 +1265,7 @@ Office: 527 Phone: TBD <xmendez@fullerton.edu>
 
 **PARK, Jihye** \*(2024) Assistant Professor; Ph.D., University of Iowa
 
-Teaches: CRJU345-Corrections; CRJU362-Immigration and Crime
+Teaches: CRJU345-Complexities in Corrections; CRJU362-Immigration and Crime
 
 Research Interests: Criminology & Inequality, Sociology of Punishment, Social Control on Immigrants, Private Prisons, Communities and Crime, Gender and Crime
 
@@ -1275,7 +1275,7 @@ Office: GH 543 Phone: 657-278-8688 <jihpark@fullerton.edu>
 
 **SPIROPOULOS, Georgia** \*(2006) Associate Professor; Ph.D., University of Cincinnati
 
-Teaches: CRJU340-Research Methods; CRJU345-Corrections; CRJU417-Mass Murder
+Teaches: CRJU340-Research Methods; CRJU345-Complexities in Corrections; CRJU417-Mass Murder
 
 Research Interests: Correctional rehabilitation and offender risk assessment, multiple (mass) murder and school and campus violence
 
@@ -1297,7 +1297,7 @@ Office: GH 516 Phone: (657) 278-4770 <dpadams@fullerton.edu>
 
 **CASTRO, Rob** \*(2002) Professor; Ph.D., University of Michigan, Ann Arbor; J.D., UCLA Law School
 
-Teaches: CRJU492-Pre-Law Internship
+Teaches: CRJU492-Pre-law Internship
 
 Research Interests: Law & Society; Public Interest Litigation
 
