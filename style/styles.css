@@ -211,7 +211,11 @@ a:hover {
 
 /* Header Styles */
 .header {
-    background: linear-gradient(135deg, var(--titan-blue), #082c5f, var(--medium-blue));
+    /* Solid fallback = the gradient's lightest stop, so the worst-case backdrop is
+       still AA-safe when the gradient doesn't paint (forced colors, "no background
+       images", print) and so contrast checkers can resolve a real background. */
+    background-color: var(--medium-blue);
+    background-image: linear-gradient(135deg, var(--titan-blue), #082c5f, var(--medium-blue));
     color: white;
     padding: 1rem;
     text-align: center;
@@ -1026,7 +1030,8 @@ input:focus, select:focus, textarea:focus {
 }
 
 .site-footer {
-    background: linear-gradient(135deg, var(--titan-blue) 0%, #082c5f 60%, var(--medium-blue) 100%);
+    background-color: var(--medium-blue);
+    background-image: linear-gradient(135deg, var(--titan-blue) 0%, #082c5f 60%, var(--medium-blue) 100%);
     color: #f8fafc;
     padding: 3rem 0 2rem;
 }
@@ -1093,7 +1098,8 @@ input:focus, select:focus, textarea:focus {
 }
 
 [data-theme="dark"] .site-footer {
-    background: linear-gradient(135deg, #1A2029 0%, #1A2F48 55%, #252A30 100%);
+    background-color: #252A30;
+    background-image: linear-gradient(135deg, #1A2029 0%, #1A2F48 55%, #252A30 100%);
     color: #EBEBEB;
 }
 
