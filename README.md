@@ -22,6 +22,31 @@ The handbook is a single-page, accessible website built with HTML, CSS, and Java
 - **Faculty** — the Criminal Justice faculty roster with teaching areas and research interests
 - **Contacts & Resources** — department, advising, and campus support contacts
 
+## Accessibility
+
+The site targets WCAG 2.2 AA. It currently scores 9.9/10 on [WAVE](https://wave.webaim.org), and 10/10 on the Terms, Privacy, and Accessibility pages.
+
+Colour contrast is checked by a script in this repo:
+
+```bash
+node tools/contrast-audit.mjs                # every page, both themes
+node tools/contrast-audit.mjs index.html     # a single page
+node tools/contrast-audit.mjs --json         # machine-readable
+```
+
+It serves the repo, drives headless Chromium, and measures the computed contrast of every text node against its real backdrop. It exits non-zero if anything fails, so it can gate a commit. Requires Node 18+ and a Chromium build (set `CHROME_PATH` if one isn't on your `PATH`).
+
+Each page is measured twice, because the two passes answer different questions:
+
+- **true** — what a sighted reader actually sees. Resolves gradients to their worst-case colour stop and composites translucent layers up the ancestor chain.
+- **checker** — what WAVE and axe-style tools see. They read `background-color` only.
+
+Three rules keep the site passing both:
+
+1. **Every gradient background also sets an explicit `background-color`.** A gradient is a `background-image`, so the `background` shorthand leaves `background-color` transparent. A checker then falls through to the page background and reports white text on white — this is exactly what produced 24 spurious WAVE errors before the fallbacks were added. Use the gradient's lightest stop so the fallback is the genuine worst case. It also matters in forced-colours mode, with background images disabled, and in print.
+2. **Links on a coloured panel need their own colour.** In `policy_styles.css` the `header` and `footer` are navy while the global link colour is the same navy, so links there must be overridden (the site uses `#FFD34D`). A breadcrumb link once sat at 1:1 — invisible — because of this.
+3. **Text on a tinted panel is measured against the composited colour, not the swatch.** A translucent tint over white lands somewhere lighter than it looks in the palette, which quietly eats contrast margin.
+
 ## Credits
 
 Created by Dr. Christie Gardiner. Updated Fall 2024 by Nallely Pratz, M.S. Ed. Updated Summer 2026 by Dr. Alissa R. Ackerman.
