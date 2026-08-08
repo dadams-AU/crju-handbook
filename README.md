@@ -58,7 +58,7 @@ This handbook is licensed under a [Creative Commons Attribution-NonCommercial-Sh
 ## Contact
 
 - PAJ Division Office: (657) 278-3521 — GH 511 — <pajdiv@fullerton.edu>
-- CRJU Advising: <https://paj.fullerton.edu/criminaljustice/advising/cj-advising.html>
+- CRJU Advising: <https://crju.fullerton.edu/advising/cj-advising.html>
 
 ---
 

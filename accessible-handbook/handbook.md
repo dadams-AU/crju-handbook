@@ -143,7 +143,7 @@ Below is a sample of many of the career choices those with a bachelor's degree i
 
 # BACHELOR OF ARTS DEGREE IN CRIMINAL JUSTICE
 
-Please see the [Criminal Justice Major Requirements website](https://paj.fullerton.edu/criminaljustice/major/) for Roadmaps by Catalog Year.
+Please see the [Criminal Justice Major Requirements website](https://crju.fullerton.edu/major/) for Roadmaps by Catalog Year.
 
 ***Catalog Years Fall 2018 and later:* CRJU courses can double-count towards GE requirements[. Please see the GE Requirements website for more information.](https://www.fullerton.edu/general-education/student-info/requirements.html)**
 
@@ -313,7 +313,7 @@ All 300- and 400-level CRJU courses not listed above as core are considered elec
 
 ## Related Fields Courses (12 units)
 
-**The major now requires an additional 12 units of related fields credits. You may choose any courses [from the list of approved courses.](https://docs.google.com/document/d/1ut0vbgFtBz0hmnh83wVZoRUkIlELQH993yXrqItHuY8/edit?usp=sharing)**
+**The major now requires an additional 12 units of related fields credits. You may choose any courses [from the list of approved courses.](https://crju.fullerton.edu/major/crju_major.html)**
 
 I.  Upper Division Writing (3 units; choose one below)
 
@@ -442,7 +442,7 @@ I.  Upper Division Writing (3 units; choose one below)
 +-------------------------------------+----------------------------------------------------------------+-------------------------------------+-------------------------------------+----------------+
 |                                     |                                                                |                                     |                                     |                |
 +-------------------------------------+----------------------------------------------------------------+-------------------------------------+-------------------------------------+----------------+
-| [**Related Fields Courses (12 Units)**](https://docs.google.com/document/d/1ut0vbgFtBz0hmnh83wVZoRUkIlELQH993yXrqItHuY8/edit?usp=sharing)                                        |                |
+| [**Related Fields Courses (12 Units)**](https://crju.fullerton.edu/major/crju_major.html)                                        |                |
 +-------------------------------------+----------------------------------------------------------------+-------------------------------------+-------------------------------------+----------------+
 | \_\_\_\_\_\_\_\_\_\_\_\_            | \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ | \_\_\_\_\_\_\_\_\_\_\_\_            | \_\_\_\_\_\_\_\_\_\_\_\_            |                |
 +-------------------------------------+----------------------------------------------------------------+-------------------------------------+-------------------------------------+----------------+
@@ -501,7 +501,7 @@ To reach your goal for graduation, you'll need to balance your time, your course
 
 **Criminal Justice Major Advising**
 
-Have questions? We've got you covered! We offer general advising sessions throughout the year. In addition, we offer walk-in advising in GH-211B. See <https://paj.fullerton.edu/criminaljustice/advising/cj-advising.html> for the current walk-in hours. Also, you may make an appointment with a faculty advisor/Criminal Justice Advisor by calling (657-278-3521) or visiting the PAJ office (GH-511).
+Have questions? We've got you covered! We offer general advising sessions throughout the year. In addition, we offer walk-in advising in GH-211B. See <https://crju.fullerton.edu/advising/cj-advising.html> for the current walk-in hours. Also, you may make an appointment with a faculty advisor/Criminal Justice Advisor by calling (657-278-3521) or visiting the PAJ office (GH-511).
 
 **General Education Information & Advising**
 
